@@ -1,0 +1,163 @@
+import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect, useState, useRef, useMemo } from 'react'
+import { useDebouncedCallback } from 'use-debounce'
+import SectionHeading from '../components/SectionHeading'
+import CitiesMap from '../components/CitiesMap'
+import CityListItem from '../components/CityListItem'
+import { fetchCities } from '../store/cities/actions'
+import { AppState } from '../store'
+import CitySearch from '../components/CitySearch'
+import stateAbbr from '../lib/stateAbbr'
+import TextButton from '../components/TextButton'
+import { theme } from '../lib/theme'
+import { fetchAgencies } from '../store/agencies/actions'
+import { reportScrollPos } from '../store/scrolled-from-top/actions'
+
+const Container = styled('div')`
+  display: flex;
+  .left {
+    flex: 1 1 auto;
+  }
+  .right {
+    flex: 0 0 30em;
+    padding-left: 1em;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  .map-container {
+    position: relative;
+    transition: transform 150ms ease-out;
+  }
+  .no-results {
+    margin-left: 4.7em;
+    font-style: italic;
+  }
+`
+
+const Cities = () => {
+  const [selectedState, setSelectedState] = useState('')
+  const [query, setQuery] = useState('')
+  const [cityLimit, setCityLimit] = useState(5)
+
+  const [mapFloatPoint, setMapFloatPoint] = useState(0)
+
+  const mapContainerRef = useRef<HTMLDivElement>(null)
+  const dispatch = useDispatch()
+
+  const [debouncedScroll] = useDebouncedCallback(() => {
+    dispatch(reportScrollPos(window.pageYOffset))
+  }, 50, { leading: true })
+
+  const cities = useSelector((state: AppState) => state.cities)
+  const scrolledFromTop = useSelector((state: AppState) => state.scrolledFromTop)
+
+  useEffect(() => {
+    dispatch(fetchAgencies())
+    dispatch(fetchCities())
+    window.addEventListener('scroll', debouncedScroll)
+    return () => {
+      dispatch(reportScrollPos(0))
+      return window.removeEventListener('scroll', debouncedScroll)
+    }
+  }, [])
+
+  // Reset the city list limit if the selected state changes.
+  useEffect(() => {
+    setCityLimit(5)
+  }, [selectedState])
+
+  function calcMapFloatPoint() {
+    const mapCont = mapContainerRef.current
+    if (mapCont) {
+      const coords = mapCont.getBoundingClientRect()
+      const currentScroll = typeof window !== 'undefined' ? window.pageYOffset : 0
+      const floatPoint = coords.top + currentScroll
+      console.log(floatPoint)
+      setMapFloatPoint(floatPoint)
+    }
+  }
+
+  useEffect(() => {
+    calcMapFloatPoint()
+  }, [])
+
+  const filteredCityList = Object.values(cities).filter(city => {
+    if (selectedState) {
+      return city.state.toUpperCase() === selectedState.toUpperCase()
+    }
+    if (query) {
+      const searchable = `${city.name} ${city.state} ${city.name}, ${city.state} ${city.name}, ${stateAbbr(city.state)}`
+      return searchable.toUpperCase().includes(query.toUpperCase())
+    }
+    return true
+  })
+
+  function handleMoreCities() {
+    setCityLimit(prevState => prevState + 10)
+  }
+
+  // const mapOffset = useMemo(() => {
+  //   const diff = scrolledFromTop - mapFloatPoint
+  //   if (diff < 0) return 0
+  //   return diff
+  // }, [scrolledFromTop, mapFloatPoint])
+
+  return (
+    <Container>
+      <div className="left">
+        <div
+          ref={mapContainerRef}
+          className="map-container"
+          // style={{ transform: `translateY(${mapOffset}px)` }}
+        >
+          <SectionHeading heading="Oversight Agencies in 100 Largest Cities">
+            Population data sourced from 2017 United States Census.
+          </SectionHeading>
+          <CitiesMap
+            selectedState={selectedState}
+            setSelectedState={setSelectedState}
+            setQuery={setQuery}
+          />
+        </div>
+      </div>
+      <div className="right">
+        <CitySearch
+          query={query}
+          setQuery={setQuery}
+          setSelectedState={setSelectedState}
+        />
+        {filteredCityList.length > 0 && (
+          <ul>
+            {filteredCityList.slice(0, cityLimit).map(city => (
+              <CityListItem key={city.longitude} cityId={city.id} />
+            ))}
+          </ul>
+        )}
+        {query.length > 0 && filteredCityList.length === 0 && (
+          <p className="no-results">No cities or states in this study match "{query}".</p>
+        )}
+        {filteredCityList.length > cityLimit && (
+          <TextButton
+            text="Show More Cities..."
+            iconBefore={['fas', 'arrow-down']}
+            onClick={handleMoreCities}
+            size={theme.ms(0)}
+            color={theme.black}
+            bgColor="white"
+          />
+        )}
+      </div>
+    </Container>
+  )
+}
+
+// Cities.getInitialProps = async ({ store }) => {
+//   return new Promise((res) => {
+//     store.dispatch(fetchCities(res))
+//   })
+// }
+
+export default Cities
