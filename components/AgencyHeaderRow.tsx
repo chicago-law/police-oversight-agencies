@@ -85,8 +85,8 @@ const AgencyHeaderRow = ({
       {makeCell('State', 'state')}
       {makeCell('Population', 'population')}
       {makeCell('Primary Role', 'primary_role')}
-      {makeCell('Established Year', 'established_year')}
-      {makeCell('Amended Year', 'amended_year')}
+      {makeCell('Established Year', 'year_established')}
+      {makeCell('Amended Year', 'year_amended')}
       {makeCell('# of Roles', 'role_count')}
       {makeCell('Roles')}
     </div>
