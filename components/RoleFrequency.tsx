@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import SectionHeading from './SectionHeading'
 import { AppState } from '../store'
 import { roleColumns } from '../lib/roleColumns'
+import formatRoleName from '../lib/formatRoleName'
 
 interface StyleProps {
   leftAxisWidth: number;
@@ -101,7 +102,9 @@ const RoleFrequency = () => {
   useEffect(() => {
     // In order to properly sort and use in D3, we'll split our object into two arrays.
     const frequencies = Object.values(roleRates).sort((a, b) => (a < b ? 1 : -1))
-    const labels = Object.keys(roleRates).sort((a, b) => (roleRates[a as roleColumns] < roleRates[b as roleColumns] ? 1 : -1))
+    const labels = Object.keys(roleRates)
+      .sort((a, b) => (roleRates[a as roleColumns] < roleRates[b as roleColumns] ? 1 : -1))
+      .map(key => formatRoleName(key as roleColumns))
 
     // Make the chart
     const chart = d3.select(chartRef.current)

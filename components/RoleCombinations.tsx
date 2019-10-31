@@ -5,6 +5,7 @@ import SectionHeading from './SectionHeading'
 import { AppState } from '../store'
 import { roleColumns } from '../lib/roleColumns'
 import countRoleCombos from '../lib/countRoleCombos'
+import formatRoleName from '../lib/formatRoleName'
 
 const Container = styled('div')`
   position: relative;
@@ -124,7 +125,7 @@ const RoleCombinations = () => {
             key={`column-${role}`}
             className={`label top-row ${highlightedRoles[1] === i ? 'highlight' : ''}`}
           >
-            {role}
+            {formatRoleName(role)}
           </td>
         ))}
       </tr>,
@@ -133,7 +134,7 @@ const RoleCombinations = () => {
       rows.push(
         <tr key={`row-${rRole}`}>
           <td className={`label ${highlightedRoles[0] === r ? 'highlight' : ''}`}>
-            {rRole}
+            {formatRoleName(rRole)}
           </td>
           {Object.values(roleColumns).map((cRole, c) => {
             if (c <= r) {
