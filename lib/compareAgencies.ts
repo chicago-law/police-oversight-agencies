@@ -56,11 +56,12 @@ export const compareAgencies = (
   if (dimension === 'role_count') {
     let valueA = 0
     let valueB = 0
-    Object.keys(roleColumns).forEach(role => {
-      if (role in a && a[role as keyof Agency]) valueA += 1
+
+    Object.values(roleColumns).forEach(value => {
+      if (a[value]) valueA += 1
     })
-    Object.keys(roleColumns).forEach(role => {
-      if (role in b && b[role as keyof Agency]) valueB += 1
+    Object.values(roleColumns).forEach(value => {
+      if (b[value]) valueB += 1
     })
 
     return compareWithNulls(valueA, valueB, reversed)
