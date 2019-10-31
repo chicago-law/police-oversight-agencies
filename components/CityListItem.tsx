@@ -5,8 +5,9 @@ import { CSSTransition } from 'react-transition-group'
 import stateAbbr from '../lib/stateAbbr'
 import TextButton from './TextButton'
 import { AppState } from '../store'
-import { roles } from '../lib/roles'
+import { roleColumns } from '../lib/roleColumns'
 import C from '../lib/constants'
+import formatRoleName from '../lib/formatRoleName'
 
 const Container = styled('li')`
   display: flex;
@@ -48,7 +49,7 @@ const Container = styled('li')`
 `
 
 interface OwnProps {
-  cityId: string;
+  cityId: number;
 }
 
 const CityListItem = ({ cityId }: OwnProps) => {
@@ -59,7 +60,7 @@ const CityListItem = ({ cityId }: OwnProps) => {
   const agencies = useSelector(({ agencies }: AppState) => Object.values(agencies)
     .filter(agency => city && city.id === agency.city_id))
 
-  function getAgencies(role: roles) {
+  function getAgencies(role: roleColumns) {
     return agencies
       .filter(agency => !!agency[role])
       .map(agency => agency.name)
@@ -69,15 +70,15 @@ const CityListItem = ({ cityId }: OwnProps) => {
   // Put the agencies into an object with their roles computed so we don't
   // need to do the operation over and over again.
   const agenciesByRole: {
-    [key in roles]: string;
+    [key in roleColumns]: string;
   } = useMemo(() => ({
-    [roles.investigative]: getAgencies(roles.investigative),
-    [roles.review]: getAgencies(roles.review),
-    [roles.audit]: getAgencies(roles.audit),
-    [roles.adjudicative]: getAgencies(roles.adjudicative),
-    [roles.appeals]: getAgencies(roles.appeals),
-    [roles.supervisory]: getAgencies(roles.supervisory),
-    [roles.advisory]: getAgencies(roles.advisory),
+    [roleColumns.investigative]: getAgencies(roleColumns.investigative),
+    [roleColumns.review]: getAgencies(roleColumns.review),
+    [roleColumns.audit]: getAgencies(roleColumns.audit),
+    [roleColumns.adjudicative]: getAgencies(roleColumns.adjudicative),
+    [roleColumns.appeals]: getAgencies(roleColumns.appeals),
+    [roleColumns.supervisory]: getAgencies(roleColumns.supervisory),
+    [roleColumns.advisory]: getAgencies(roleColumns.advisory),
   }), [agencies])
 
   const noAgencies = useMemo(() => !Object.values(agenciesByRole).some(agencyNames => agencyNames), [agencies])
@@ -96,10 +97,10 @@ const CityListItem = ({ cityId }: OwnProps) => {
         )}
         {!noAgencies && (
           <>
-            {Object.keys(agenciesByRole).map((role) => (
-              <p key={role} className={agenciesByRole[role as roles].length ? 'agency ' : 'agency none'}>
-                <strong>{role.toLowerCase()}: </strong>
-                {agenciesByRole[role as roles].length ? agenciesByRole[role as roles] : 'None'}
+            {Object.entries(agenciesByRole).map(([role, agencies]) => (
+              <p key={role} className={agencies.length ? 'agency ' : 'agency none'}>
+                <strong>{formatRoleName(role as roleColumns)}: </strong>
+                {agencies.length ? agencies : 'None'}
               </p>
             ))}
             <CSSTransition
@@ -111,11 +112,11 @@ const CityListItem = ({ cityId }: OwnProps) => {
             >
               <>
                 {agencies.map(agency => (
-                  <div className="agency-detail" key={agency.id}>
+                  <div key={agency.id} className="agency-detail">
                     <h4>{agency.name}</h4>
-                    <p><strong>Est: </strong>{agency.established_year}</p>
-                    {agency.amended_year && (
-                      <p><strong>Amended: </strong>{agency.amended_year}</p>
+                    <p><strong>Est: </strong>{agency.year_established !== null ? agency.year_established : '(unknown)' }</p>
+                    {agency.year_amended && (
+                      <p><strong>Amended: </strong>{agency.year_amended}</p>
                     )}
                     <p><strong>Primary Role: </strong>{agency.primary_role}</p>
                     <p><strong>Description: </strong>{agency.description}</p>

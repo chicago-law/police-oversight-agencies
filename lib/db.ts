@@ -1,6 +1,6 @@
 import * as sql from 'mssql'
 
-const queryDb = async (query: string) => {
+const queryDb = async <T>(query: string) => {
   const config = {
     server: process.env.DB_SERVER || '',
     database: process.env.DB_DATABASE || '',
@@ -13,9 +13,9 @@ const queryDb = async (query: string) => {
   const pool = new sql.ConnectionPool(config)
   await pool.connect()
   try {
-    results = await pool.query(query)
+    results = await pool.query<T>(query)
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
   await pool.close()
 

@@ -3,7 +3,7 @@ import { useState, useRef } from 'react'
 import TextButton from './TextButton'
 import animations from '../lib/animations'
 import { theme } from '../lib/theme'
-import { roles } from '../lib/roles'
+import { roleColumns } from '../lib/roleColumns'
 import useOutsideClickDetector from '../hooks/useOutsideClickDetector'
 
 const Container = styled('div')`
@@ -49,8 +49,8 @@ const Container = styled('div')`
 
 interface OwnProps {
   setDisplayPopup: (newState: boolean) => void;
-  reqRoles: roles[];
-  setReqRoles: (newRoles: roles[]) => void;
+  reqRoles: roleColumns[];
+  setReqRoles: (newRoles: roleColumns[]) => void;
 }
 
 const RoleFilterPopup = ({
@@ -65,13 +65,13 @@ const RoleFilterPopup = ({
     setDisplayPopup(false)
   })
 
-  function handleCheckbox(name: roles | 'any') {
+  function handleCheckbox(name: roleColumns | 'any') {
     if (name === 'any') {
       setTempReqRoles([])
     } else if (tempReqRoles.includes(name)) {
       // Uncheck if already checked.
       setTempReqRoles(prev => prev.filter(role => role !== name))
-    } else if (tempReqRoles.length + 1 === Object.keys(roles).length) {
+    } else if (tempReqRoles.length + 1 === Object.keys(roleColumns).length) {
       // If checking one more box will mean they're all checked, bypass
       // and check "any" instead.
       setTempReqRoles([])
@@ -101,7 +101,7 @@ const RoleFilterPopup = ({
             Any
           </label>
         </li>
-        {Object.values(roles).map(role => (
+        {Object.values(roleColumns).map(role => (
           <li key={role}>
             <label htmlFor={role} className={tempReqRoles.includes(role) ? 'active' : ''}>
               <input

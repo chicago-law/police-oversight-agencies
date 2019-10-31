@@ -1,6 +1,6 @@
 import { Agency } from '../store/agencies/types'
 import { Cities, City } from '../store/cities/types'
-import { roles } from './roles'
+import { roleColumns } from './roleColumns'
 import compareWithNulls from './compareWithNulls'
 
 export type AgencySortDimensions =
@@ -56,10 +56,10 @@ export const compareAgencies = (
   if (dimension === 'role_count') {
     let valueA = 0
     let valueB = 0
-    Object.keys(roles).forEach(role => {
+    Object.keys(roleColumns).forEach(role => {
       if (role in a && a[role as keyof Agency]) valueA += 1
     })
-    Object.keys(roles).forEach(role => {
+    Object.keys(roleColumns).forEach(role => {
       if (role in b && b[role as keyof Agency]) valueB += 1
     })
 

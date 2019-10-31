@@ -4,7 +4,7 @@ import { useRef, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import SectionHeading from './SectionHeading'
 import { AppState } from '../store'
-import { roles } from '../lib/roles'
+import { roleColumns } from '../lib/roleColumns'
 
 interface StyleProps {
   leftAxisWidth: number;
@@ -80,15 +80,15 @@ const RoleFrequency = () => {
 
   const roleRates = useMemo(() => {
     const results = {
-      [roles.adjudicative]: 0,
-      [roles.advisory]: 0,
-      [roles.appeals]: 0,
-      [roles.audit]: 0,
-      [roles.investigative]: 0,
-      [roles.review]: 0,
-      [roles.supervisory]: 0,
+      [roleColumns.adjudicative]: 0,
+      [roleColumns.advisory]: 0,
+      [roleColumns.appeals]: 0,
+      [roleColumns.audit]: 0,
+      [roleColumns.investigative]: 0,
+      [roleColumns.review]: 0,
+      [roleColumns.supervisory]: 0,
     }
-    Object.values(roles).forEach(role => {
+    Object.values(roleColumns).forEach(role => {
       let tally = 0
       Object.values(agencies).forEach(agency => {
         if (agency[role]) tally += 1
@@ -101,7 +101,7 @@ const RoleFrequency = () => {
   useEffect(() => {
     // In order to properly sort and use in D3, we'll split our object into two arrays.
     const frequencies = Object.values(roleRates).sort((a, b) => (a < b ? 1 : -1))
-    const labels = Object.keys(roleRates).sort((a, b) => (roleRates[a as roles] < roleRates[b as roles] ? 1 : -1))
+    const labels = Object.keys(roleRates).sort((a, b) => (roleRates[a as roleColumns] < roleRates[b as roleColumns] ? 1 : -1))
 
     // Make the chart
     const chart = d3.select(chartRef.current)

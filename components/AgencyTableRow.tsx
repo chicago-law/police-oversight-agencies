@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { AppState } from '../store'
 import stateAbbr from '../lib/stateAbbr'
 import getAgencyRoles from '../lib/getAgencyRoles'
+import formatRoleName from '../lib/formatRoleName'
 
 const Container = styled('div')`
   position: relative;
@@ -36,7 +37,6 @@ const Container = styled('div')`
     .fa-angle-down {
       position: relative;
       left: 1px;
-      /* font-size: ${props => props.theme.ms(-1)}; */
     }
     &:hover, &:focus {
       background: ${props => props.theme.middleGray};
@@ -64,7 +64,7 @@ const Container = styled('div')`
 `
 
 interface OwnProps {
-  agencyId: string;
+  agencyId: number;
 }
 
 const AgencyTableRow = ({ agencyId }: OwnProps) => {
@@ -97,11 +97,11 @@ const AgencyTableRow = ({ agencyId }: OwnProps) => {
         <div>{city.name}</div>
         <div>{stateAbbr(city.state)}</div>
         <div>{city.population.toLocaleString()}</div>
-        <div>{agency.primary_role}</div>
-        <div>{agency.established_year}</div>
-        <div>{agency.amended_year}</div>
+        <div className="roles">{agency.primary_role}</div>
+        <div>{agency.year_established}</div>
+        <div>{agency.year_amended}</div>
         <div>{agencyRoles.length}</div>
-        <div className="roles">{agencyRoles.map(role => role.toLowerCase()).join(', ')}</div>
+        <div className="roles">{agencyRoles.map(role => formatRoleName(role)).join(', ')}</div>
       </div>
 
       <button

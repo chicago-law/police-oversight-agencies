@@ -1,10 +1,10 @@
-import { roles } from './roles'
+import { roleColumns } from './roleColumns'
 import { AgenciesStates } from '../store/agencies/types'
 import { CitiesState } from '../store/cities/types'
 
 function countRoleCombos(
-  roleA: roles,
-  roleB: roles,
+  roleA: roleColumns,
+  roleB: roleColumns,
   agencies: AgenciesStates,
   cities: CitiesState,
 ) {
@@ -26,7 +26,7 @@ function countRoleCombos(
     Object.values(cities).forEach(city => {
       const cityAgencies = Object.values(agencies)
         .filter(agency => agency.city_id === city.id)
-      const otherRoles = Object.values(roles)
+      const otherRoles = Object.values(roleColumns)
         .filter(role => role !== roleA)
 
       const hasA = cityAgencies

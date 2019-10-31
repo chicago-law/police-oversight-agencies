@@ -1,22 +1,20 @@
-import { roles } from '../../lib/roles'
+import { roleColumns } from '../../lib/roleColumns'
 
 export interface Agency {
-  id: string;
+  id: number;
   name: string;
-  city_id: string;
-  dep_city: string;
-  dep_state: string;
-  established_year: number | null;
-  amended_year: number | null;
+  city_id: number;
+  year_established: number | null;
+  year_amended: number | null;
   primary_role: string | null;
   description: string | null;
-  [roles.investigative]: number;
-  [roles.review]: number;
-  [roles.audit]: number;
-  [roles.adjudicative]: number;
-  [roles.supervisory]: number;
-  [roles.advisory]: number;
-  [roles.appeals]: number;
+  [roleColumns.investigative]: number | null;
+  [roleColumns.review]: number | null;
+  [roleColumns.audit]: number | null;
+  [roleColumns.adjudicative]: number | null;
+  [roleColumns.supervisory]: number | null;
+  [roleColumns.advisory]: number | null;
+  [roleColumns.appeals]: number | null;
 }
 
 export type Agencies = {

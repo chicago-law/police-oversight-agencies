@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect, useState, useRef, useMemo } from 'react'
-import { useDebouncedCallback } from 'use-debounce'
+import { useEffect, useState } from 'react'
 import SectionHeading from '../components/SectionHeading'
 import CitiesMap from '../components/CitiesMap'
 import CityListItem from '../components/CityListItem'
@@ -12,7 +11,6 @@ import stateAbbr from '../lib/stateAbbr'
 import TextButton from '../components/TextButton'
 import { theme } from '../lib/theme'
 import { fetchAgencies } from '../store/agencies/actions'
-import { reportScrollPos } from '../store/scrolled-from-top/actions'
 
 const Container = styled('div')`
   display: flex;
@@ -27,10 +25,6 @@ const Container = styled('div')`
     margin: 0;
     padding: 0;
   }
-  .map-container {
-    position: relative;
-    transition: transform 150ms ease-out;
-  }
   .no-results {
     margin-left: 4.7em;
     font-style: italic;
@@ -42,47 +36,18 @@ const Cities = () => {
   const [query, setQuery] = useState('')
   const [cityLimit, setCityLimit] = useState(5)
 
-  const [mapFloatPoint, setMapFloatPoint] = useState(0)
-
-  const mapContainerRef = useRef<HTMLDivElement>(null)
-  const dispatch = useDispatch()
-
-  const [debouncedScroll] = useDebouncedCallback(() => {
-    dispatch(reportScrollPos(window.pageYOffset))
-  }, 50, { leading: true })
-
   const cities = useSelector((state: AppState) => state.cities)
-  const scrolledFromTop = useSelector((state: AppState) => state.scrolledFromTop)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchAgencies())
     dispatch(fetchCities())
-    window.addEventListener('scroll', debouncedScroll)
-    return () => {
-      dispatch(reportScrollPos(0))
-      return window.removeEventListener('scroll', debouncedScroll)
-    }
   }, [])
 
-  // Reset the city list limit if the selected state changes.
+  // Reset the city list limit if the state or query changes.
   useEffect(() => {
     setCityLimit(5)
-  }, [selectedState])
-
-  function calcMapFloatPoint() {
-    const mapCont = mapContainerRef.current
-    if (mapCont) {
-      const coords = mapCont.getBoundingClientRect()
-      const currentScroll = typeof window !== 'undefined' ? window.pageYOffset : 0
-      const floatPoint = coords.top + currentScroll
-      console.log(floatPoint)
-      setMapFloatPoint(floatPoint)
-    }
-  }
-
-  useEffect(() => {
-    calcMapFloatPoint()
-  }, [])
+  }, [selectedState, query])
 
   const filteredCityList = Object.values(cities).filter(city => {
     if (selectedState) {
@@ -99,29 +64,17 @@ const Cities = () => {
     setCityLimit(prevState => prevState + 10)
   }
 
-  // const mapOffset = useMemo(() => {
-  //   const diff = scrolledFromTop - mapFloatPoint
-  //   if (diff < 0) return 0
-  //   return diff
-  // }, [scrolledFromTop, mapFloatPoint])
-
   return (
     <Container>
       <div className="left">
-        <div
-          ref={mapContainerRef}
-          className="map-container"
-          // style={{ transform: `translateY(${mapOffset}px)` }}
-        >
-          <SectionHeading heading="Oversight Agencies in 100 Largest Cities">
+        <SectionHeading heading="Oversight Agencies in 100 Largest Cities">
             Population data sourced from 2017 United States Census.
-          </SectionHeading>
-          <CitiesMap
-            selectedState={selectedState}
-            setSelectedState={setSelectedState}
-            setQuery={setQuery}
-          />
-        </div>
+        </SectionHeading>
+        <CitiesMap
+          selectedState={selectedState}
+          setSelectedState={setSelectedState}
+          setQuery={setQuery}
+        />
       </div>
       <div className="right">
         <CitySearch

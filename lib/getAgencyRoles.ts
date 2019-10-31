@@ -1,10 +1,10 @@
 import { Agency } from '../store/agencies/types'
-import { roles } from './roles'
+import { roleColumns } from './roleColumns'
 
 function getAgencyRoles(agency: Agency) {
-  const results: roles[] = []
-  Object.values(roles).forEach(role => {
-    if (agency[roles[role]]) results.push(roles[role])
+  const results: roleColumns[] = []
+  Object.values(roleColumns).forEach(role => {
+    if (agency[role]) results.push(role)
   })
   return results
 }

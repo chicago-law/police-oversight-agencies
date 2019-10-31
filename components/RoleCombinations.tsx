@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useMemo, useState } from 'react'
 import SectionHeading from './SectionHeading'
 import { AppState } from '../store'
-import { roles } from '../lib/roles'
+import { roleColumns } from '../lib/roleColumns'
 import countRoleCombos from '../lib/countRoleCombos'
 
 const Container = styled('div')`
@@ -78,7 +78,7 @@ const Container = styled('div')`
 `
 
 interface Combo {
-  roles: [roles, roles];
+  roles: [roleColumns, roleColumns];
   tally: number;
 }
 
@@ -87,7 +87,7 @@ const RoleCombinations = () => {
   const cities = useSelector((state: AppState) => state.cities)
   const [highlightedRoles, setHighlightedRoles] = useState<[number | null, number | null]>([null, null])
 
-  function comboLookup(roleA: roles, roleB: roles, comboLibrary: Combo[]) {
+  function comboLookup(roleA: roleColumns, roleB: roleColumns, comboLibrary: Combo[]) {
     return comboLibrary.find(combo => (combo.roles.length === 2
       && ((combo.roles[0] === roleA && combo.roles[1] === roleB)
       || (combo.roles[0] === roleB && combo.roles[1] === roleA))
@@ -96,11 +96,11 @@ const RoleCombinations = () => {
 
   const comboLibrary = useMemo(() => {
     const library: Combo[] = []
-    Object.values(roles).forEach(roleA => {
-      Object.values(roles).forEach((roleB) => {
+    Object.values(roleColumns).forEach(roleA => {
+      Object.values(roleColumns).forEach((roleB) => {
         if (!comboLookup(roleA, roleB, library)) {
           library.push({
-            roles: [roleA, roleB] as [roles, roles],
+            roles: [roleA, roleB] as [roleColumns, roleColumns],
             tally: countRoleCombos(roleA, roleB, agencies, cities),
           })
         }
@@ -109,7 +109,7 @@ const RoleCombinations = () => {
     return library.sort((a, b) => (a.tally > b.tally ? -1 : 1))
   }, [cities, agencies])
 
-  function getComboTally(roleA: roles, roleB: roles, comboLibrary: Combo[]) {
+  function getComboTally(roleA: roleColumns, roleB: roleColumns, comboLibrary: Combo[]) {
     const combo = comboLookup(roleA, roleB, comboLibrary)
     return combo ? combo.tally : 0
   }
@@ -119,7 +119,7 @@ const RoleCombinations = () => {
     rows.push(
       <tr key="row-heading">
         <td className="label empty" />
-        {Object.values(roles).map((role, i) => (
+        {Object.values(roleColumns).map((role, i) => (
           <td
             key={`column-${role}`}
             className={`label top-row ${highlightedRoles[1] === i ? 'highlight' : ''}`}
@@ -129,13 +129,13 @@ const RoleCombinations = () => {
         ))}
       </tr>,
     )
-    Object.values(roles).forEach((rRole, r) => {
+    Object.values(roleColumns).forEach((rRole, r) => {
       rows.push(
         <tr key={`row-${rRole}`}>
           <td className={`label ${highlightedRoles[0] === r ? 'highlight' : ''}`}>
             {rRole}
           </td>
-          {Object.values(roles).map((cRole, c) => {
+          {Object.values(roleColumns).map((cRole, c) => {
             if (c <= r) {
               return (
                 <td
@@ -193,11 +193,8 @@ const RoleCombinations = () => {
         {comboLibrary.slice(0, 5).map(combo => (
           combo.roles.length === 2 && (
             combo.roles[0] !== combo.roles[1]
-              ? (
-                <p key={combo.roles.join('')}><strong>{combo.roles.join(' + ')}:</strong> {combo.tally}</p>
-              ) : (
-                <p key={combo.roles.join('')}><strong>{combo.roles[0]} (as Sole Oversight Function):</strong> {combo.tally}</p>
-              )
+              ? <p key={combo.roles.join('')}><strong>{combo.roles.join(' + ')}:</strong> {combo.tally}</p>
+              : <p key={combo.roles.join('')}><strong>{combo.roles[0]} (as Sole Oversight Function):</strong> {combo.tally}</p>
           )
         ))}
       </div>

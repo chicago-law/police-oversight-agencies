@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
-import { roles } from '../lib/roles'
+import { roleColumns } from '../lib/roleColumns'
 import RoleFilterPopup from './RoleFilterPopup'
 
 const Container = styled('div')`
@@ -47,8 +47,8 @@ const Container = styled('div')`
 interface OwnProps {
   query: string;
   setQuery: (text: string) => void;
-  reqRoles: roles[];
-  setReqRoles: (reqs: roles[]) => void;
+  reqRoles: roleColumns[];
+  setReqRoles: (reqs: roleColumns[]) => void;
 }
 
 const AgencyFilters = ({

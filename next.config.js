@@ -1,6 +1,7 @@
-// eslint-disable-next-line
 const withCSS = require('@zeit/next-css')
-// (This is here so we can import normalize.css in _app.tsx)
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 module.exports = withCSS({
   webpack(config) {

@@ -6,7 +6,7 @@ import { AppState } from '../store'
 import { fetchCities } from '../store/cities/actions'
 import { fetchAgencies } from '../store/agencies/actions'
 import stateAbbr from '../lib/stateAbbr'
-import { roles } from '../lib/roles'
+import { roleColumns } from '../lib/roleColumns'
 import { compareAgencies, AgencySortDimensions } from '../lib/compareAgencies'
 import AgencyHeaderRow from '../components/AgencyHeaderRow'
 import AgencyTableRow from '../components/AgencyTableRow'
@@ -30,7 +30,7 @@ const Container = styled('div')`
 
 const Agencies = () => {
   const [query, setQuery] = useState('')
-  const [reqRoles, setReqRoles] = useState<roles[]>([])
+  const [reqRoles, setReqRoles] = useState<roleColumns[]>([])
   const [sort, setSort] = useState<[AgencySortDimensions, 'asc' | 'desc']>(['name', 'asc'])
 
   const dispatch = useDispatch()
