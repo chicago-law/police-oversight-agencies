@@ -6,6 +6,7 @@ import SectionHeading from './SectionHeading'
 import { AppState } from '../store'
 import { roleColumns } from '../lib/roleColumns'
 import formatRoleName from '../lib/formatRoleName'
+import Loading from './Loading'
 
 interface StyleProps {
   leftAxisWidth: number;
@@ -56,9 +57,12 @@ const Container = styled('div')<StyleProps>`
 `
 
 const RoleFrequency = () => {
+  const chartRef = useRef<HTMLDivElement>(null)
   const agencies = useSelector((state: AppState) => state.agencies)
   const cities = useSelector((state: AppState) => state.cities)
-  const chartRef = useRef<HTMLDivElement>(null)
+  const dataReady = useMemo(() => {
+    return Object.keys(agencies).length !== 0 && Object.keys(cities).length !== 0
+  }, [agencies, cities])
 
   const [chartWidth, setChartWidth] = useState(893)
   const chartHeight = 200
@@ -141,29 +145,22 @@ const RoleFrequency = () => {
     }
   }, [agencies, cities, chartWidth])
 
-  if (!Object.keys(agencies).length || !Object.keys(cities).length) {
-    return (
-      <Container leftAxisWidth={leftAxisWidth}>
-        <SectionHeading heading="Role Frequency">
-          Which oversight roles occur most frequently?
-        </SectionHeading>
-        Loading...
-      </Container>
-    )
-  }
-
   return (
     <Container leftAxisWidth={leftAxisWidth}>
       <SectionHeading heading="Role Frequency">
         Which oversight roles occur most frequently?
       </SectionHeading>
-      <div className="chart-container">
-        <div className="heading">
-          <span className="role">Role</span>
-          <span className="role">Percentage of Cities with Agency Fulfilling Function</span>
-        </div>
-        <div className="chart" ref={chartRef} />
-      </div>
+      {!dataReady
+        ? <Loading />
+        : (
+          <div className="chart-container">
+            <div className="heading">
+              <span className="role">Role</span>
+              <span className="role">Percentage of Cities with Agency Fulfilling Function</span>
+            </div>
+            <div className="chart" ref={chartRef} />
+          </div>
+        )}
     </Container>
   )
 }

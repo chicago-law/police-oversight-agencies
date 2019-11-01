@@ -4,8 +4,9 @@ import { useMemo, useState } from 'react'
 import SectionHeading from './SectionHeading'
 import { AppState } from '../store'
 import { roleColumns } from '../lib/roleColumns'
-import countRoleCombos from '../lib/countRoleCombos'
+import { getComboTally, buildRoleComboLibrary } from '../lib/roleCombinations'
 import formatRoleName from '../lib/formatRoleName'
+import Loading from './Loading'
 
 const Container = styled('div')`
   position: relative;
@@ -80,42 +81,17 @@ const Container = styled('div')`
   }
 `
 
-interface Combo {
-  roles: [roleColumns, roleColumns];
-  tally: number;
-}
-
 const RoleCombinations = () => {
+  const [highlightedRoles, setHighlightedRoles] = useState<[number | null, number | null]>([null, null])
   const agencies = useSelector((state: AppState) => state.agencies)
   const cities = useSelector((state: AppState) => state.cities)
-  const [highlightedRoles, setHighlightedRoles] = useState<[number | null, number | null]>([null, null])
-
-  function comboLookup(roleA: roleColumns, roleB: roleColumns, comboLibrary: Combo[]) {
-    return comboLibrary.find(combo => (combo.roles.length === 2
-      && ((combo.roles[0] === roleA && combo.roles[1] === roleB)
-      || (combo.roles[0] === roleB && combo.roles[1] === roleA))
-    ))
-  }
+  const dataReady = useMemo(() => {
+    return Object.keys(agencies).length !== 0 && Object.keys(cities).length !== 0
+  }, [agencies, cities])
 
   const comboLibrary = useMemo(() => {
-    const library: Combo[] = []
-    Object.values(roleColumns).forEach(roleA => {
-      Object.values(roleColumns).forEach((roleB) => {
-        if (!comboLookup(roleA, roleB, library)) {
-          library.push({
-            roles: [formatRoleName(roleA), formatRoleName(roleB)] as [roleColumns, roleColumns],
-            tally: countRoleCombos(roleA, roleB, agencies, cities),
-          })
-        }
-      })
-    })
-    return library.sort((a, b) => (a.tally > b.tally ? -1 : 1))
+    return buildRoleComboLibrary(agencies, cities)
   }, [cities, agencies])
-
-  function getComboTally(roleA: roleColumns, roleB: roleColumns, comboLibrary: Combo[]) {
-    const combo = comboLookup(roleA, roleB, comboLibrary)
-    return combo ? combo.tally : 0
-  }
 
   const tableRows = useMemo(() => {
     const rows: React.ReactNode[] = []
@@ -159,48 +135,48 @@ const RoleCombinations = () => {
     return rows
   }, [agencies, cities, highlightedRoles])
 
-  if (!Object.keys(agencies).length || !Object.keys(cities).length) {
-    return (
-      <Container>
-        <SectionHeading heading="Role Combinations">
-          Which combinations of oversight roles within a single city are most prevalent?
-        </SectionHeading>
-        Loading...
-      </Container>
-    )
-  }
-
   return (
     <Container>
       <SectionHeading heading="Role Combinations">
         Which combinations of oversight roles within a single city are most prevalent?
       </SectionHeading>
-      <div className="scrolling-container">
-        <table>
-          <tbody>
-            {tableRows.map(row => row)}
-          </tbody>
-        </table>
-      </div>
-      <div className="legend">
-        <div>
-          <div className="swatch"><span>#</span></div>
-          <p>Indicates number of cities that employ the combinations of oversight functions as specified along the horizontal and vertical axes.</p>
-        </div>
-        <div>
-          <div className="swatch single-function"><span>#</span></div>
-          <p>Indicates number of cities that employ only this sole oversight function.</p>
-        </div>
-      </div>
-      <div className="top-combos">
-        {comboLibrary.slice(0, 5).map(combo => (
-          combo.roles.length === 2 && (
-            combo.roles[0] !== combo.roles[1]
-              ? <p key={combo.roles.join('')}><strong>{combo.roles.join(' + ')}:</strong> {combo.tally}</p>
-              : <p key={combo.roles.join('')}><strong>{combo.roles[0]} (as sole oversight function):</strong> {combo.tally}</p>
-          )
-        ))}
-      </div>
+      {!dataReady
+        ? <Loading />
+        : (
+          <>
+            <div className="scrolling-container">
+              <table>
+                <tbody>
+                  {tableRows.map(row => row)}
+                </tbody>
+              </table>
+            </div>
+            <div className="legend">
+              <div>
+                <div className="swatch"><span>#</span></div>
+                <p>Indicates number of cities that employ the combinations of oversight functions as specified along the horizontal and vertical axes.</p>
+              </div>
+              <div>
+                <div className="swatch single-function"><span>#</span></div>
+                <p>Indicates number of cities that employ only this sole oversight function.</p>
+              </div>
+            </div>
+            <div className="top-combos">
+              {comboLibrary.slice(0, 5).map(combo => (
+                combo.roles.length === 2 && combo.roles[0] !== combo.roles[1]
+                  ? (
+                    <p key={combo.roles.join('')}>
+                      <strong>{combo.roles.map(role => formatRoleName(role)).join(' + ')}:</strong> {combo.tally}
+                    </p>
+                  ) : (
+                    <p key={combo.roles.join('')}>
+                      <strong>{formatRoleName(combo.roles[0])} (as sole oversight function):</strong> {combo.tally}
+                    </p>
+                  )
+              ))}
+            </div>
+          </>
+        )}
     </Container>
   )
 }
