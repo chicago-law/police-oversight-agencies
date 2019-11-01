@@ -9,6 +9,10 @@ import formatRoleName from '../lib/formatRoleName'
 
 const Container = styled('div')`
   position: relative;
+  .scrolling-container {
+    width: 100%;
+    overflow-x: auto;
+  }
   table {
     width: 100%;
     border-collapse: collapse;
@@ -173,21 +177,21 @@ const RoleCombinations = () => {
       <SectionHeading heading="Role Combinations">
         Which combinations of oversight roles within a single city are most prevalent?
       </SectionHeading>
-      <div className="chart">
+      <div className="scrolling-container">
         <table>
           <tbody>
             {tableRows.map(row => row)}
           </tbody>
         </table>
-        <div className="legend">
-          <div>
-            <div className="swatch"><span>#</span></div>
-            <p>Indicates number of cities that employ the combinations of oversight functions as specified along the horizontal and vertical axes.</p>
-          </div>
-          <div>
-            <div className="swatch single-function"><span>#</span></div>
-            <p>Indicates number of cities that employ only this sole oversight function.</p>
-          </div>
+      </div>
+      <div className="legend">
+        <div>
+          <div className="swatch"><span>#</span></div>
+          <p>Indicates number of cities that employ the combinations of oversight functions as specified along the horizontal and vertical axes.</p>
+        </div>
+        <div>
+          <div className="swatch single-function"><span>#</span></div>
+          <p>Indicates number of cities that employ only this sole oversight function.</p>
         </div>
       </div>
       <div className="top-combos">

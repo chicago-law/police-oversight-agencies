@@ -11,7 +11,7 @@ interface StyleProps {
 }
 
 const StyledButton = styled('button')<StyleProps>`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: ${props => props.theme.proximaNova};

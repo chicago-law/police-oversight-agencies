@@ -10,12 +10,20 @@ import RoleCombinations from '../components/RoleCombinations'
 const Container = styled('div')`
   position: relative;
   display: flex;
+  @media (max-width: ${props => props.theme.bP.dMd}) {
+    flex-direction: column;
+  }
   .left {
     flex: 1 1 auto;
   }
   .right {
     flex: 1 1 27em;
     padding-left: 4em;
+    @media (max-width: ${props => props.theme.bP.dMd}) {
+      flex: 1 1 auto;
+      padding: 0;
+      margin-top: 4em;
+    }
   }
 `
 

@@ -12,13 +12,25 @@ import formatRoleName from '../lib/formatRoleName'
 const Container = styled('li')`
   display: flex;
   margin-bottom: 3em;
-  .population {
+  .population, .mobile-population {
     position: relative;
+    font-size: ${props => props.theme.ms(-1)};
+  }
+  .population {
     top: 12px;
     flex: 0 0 5.9em; /* Fixed width so we can position the search icon in line with it */
     padding-right: 1.25em;
     text-align: right;
-    font-size: ${props => props.theme.ms(-1)};
+    @media (max-width: ${props => props.theme.bP.mS}) {
+      display: none;
+    }
+  }
+  .mobile-population {
+    display: none;
+    margin-bottom: 1em;
+    @media (max-width: ${props => props.theme.bP.mS}) {
+      display: block;
+    }
   }
   h2 {
     margin: 0 0 0.2em 0;
@@ -92,6 +104,7 @@ const CityListItem = ({ cityId }: OwnProps) => {
       <span className="population">{city.population.toLocaleString()}</span>
       <div>
         <h2>{city.name}, {stateAbbr(city.state)}</h2>
+        <span className="mobile-population">{city.population.toLocaleString()}</span>
         {noAgencies && (
           <p style={{ opacity: 0.5 }}>None</p>
         )}

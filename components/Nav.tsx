@@ -7,14 +7,35 @@ const Container = styled('nav')`
   align-items: center;
   justify-content: center;
   margin: 7em 0 8em 0;
+  @media (max-width: ${props => props.theme.bP.mR}) {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 4em 0;
+    h5 {
+      margin-bottom: 2em;
+      text-align: center;
+    }
+  }
   ul {
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: ${props => props.theme.bP.mR}) {
+      justify-content: space-around;
+    }
+    @media (max-width: ${props => props.theme.bP.mS}) {
+      flex-direction: column;
+    }
   }
   li {
     list-style-type: none;
     margin: 0 1.5em;
+    @media (max-width: ${props => props.theme.bP.mR}) {
+      margin: 0;
+    }
+    @media (max-width: ${props => props.theme.bP.mS}) {
+      margin: 0 0 1em 0;
+    }
   }
   a {
     position: relative;

@@ -10,6 +10,12 @@ const Container = styled('div')`
   margin: 0 auto;
   max-width: 80em;
   padding: 0 3em;
+  @media (max-width: ${props => props.theme.bP.dMd}) {
+    padding: 0 2em;
+  }
+  @media (max-width: ${props => props.theme.bP.mR}) {
+    padding: 0 1em;
+  }
 `
 
 const Page: React.FC = ({ children }) => {

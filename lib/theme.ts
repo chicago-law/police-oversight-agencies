@@ -25,4 +25,18 @@ export const theme = {
   easing: {
     exponential: 'cubic-bezier(.19,1,.22,1)',
   },
+
+  // @media breakpoints
+  bP: {
+    // Desktop Large is 1400 down to 1150.
+    dLg: '1400px',
+    // Desktop Medium is 1150 down to 900.
+    dMd: '1150px',
+    // Desktop Small is 900 down to 767.
+    dSm: '900px',
+    // Mobile Regular is 767 down to 400.
+    mR: '767px',
+    // Mobile Small is 400 and below.
+    mS: '400px',
+  },
 }

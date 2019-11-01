@@ -14,7 +14,13 @@ import Loading from '../components/Loading'
 
 const Container = styled('div')`
   position: relative;
+  .scrolling-container {
+    width: 100%;
+    overflow-x: auto;
+  }
   .table {
+    min-width: 62em;
+    min-height: 15em;
     .columned-row {
       display: grid;
       grid-template-columns: 1fr 8em 4em 6em 8em 5em 5em 3em 12em;
@@ -26,6 +32,10 @@ const Container = styled('div')`
         padding-right: 2.5em;
       }
     }
+  }
+  .no-results {
+    margin-top: 1em;
+    font-style: italic;
   }
 `
 
@@ -42,6 +52,9 @@ const Agencies = () => {
 
   const agencies = useSelector(({ agencies }: AppState) => agencies)
   const cities = useSelector(({ cities }: AppState) => cities)
+  const dataReady = useMemo(() => {
+    return Object.keys(agencies).length !== 0 && Object.keys(cities).length !== 0
+  }, [agencies, cities])
 
   const sortedAgencies = useMemo(() => {
     return Object.values(agencies).sort((a, b) => {
@@ -78,16 +91,19 @@ const Agencies = () => {
         reqRoles={reqRoles}
         setReqRoles={setReqRoles}
       />
-      <div className="table">
-        <AgencyHeaderRow sort={sort} setSort={setSort} />
-        {Object.keys(agencies).length > 0 && Object.keys(cities).length > 0
-          ? (
-            filteredAgencies.map(agency => (
-              <AgencyTableRow key={agency.id} agencyId={agency.id} />
-            ))
-          ) : (
+      <div className="scrolling-container">
+        <div className="table">
+          <AgencyHeaderRow sort={sort} setSort={setSort} />
+          {!dataReady && (
             <Loading />
           )}
+          {filteredAgencies.map(agency => (
+            <AgencyTableRow key={agency.id} agencyId={agency.id} />
+          ))}
+          {filteredAgencies.length === 0 && dataReady && (
+            <p className="no-results">No agencies found with the current filter criteria.</p>
+          )}
+        </div>
       </div>
     </Container>
   )

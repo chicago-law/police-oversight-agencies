@@ -15,12 +15,27 @@ import Loading from '../components/Loading'
 
 const Container = styled('div')`
   display: flex;
+  @media (max-width: ${props => props.theme.bP.dSm}) {
+    flex-direction: column;
+  }
   .left {
     flex: 1 1 auto;
+    @media (max-width: ${props => props.theme.bP.mR}) {
+      margin-bottom: 2em;
+    }
   }
   .right {
     flex: 0 0 30em;
     padding-left: 1em;
+    @media (max-width: ${props => props.theme.bP.dMd}) {
+      flex: 0 0 25em;
+    }
+    @media (max-width: ${props => props.theme.bP.dSm}) {
+      flex: 1 1 auto;
+    }
+    @media (max-width: ${props => props.theme.bP.mR}) {
+      padding: 0;
+    }
   }
   ul {
     margin: 0;
@@ -98,14 +113,16 @@ const Cities = () => {
           <p className="no-results">No cities or states in this study match "{query}".</p>
         )}
         {filteredCityList.length > cityLimit && (
-          <TextButton
-            text="Show More Cities..."
-            iconBefore={['fas', 'arrow-down']}
-            onClick={handleMoreCities}
-            size={theme.ms(0)}
-            color={theme.black}
-            bgColor="white"
-          />
+          <div style={{ textAlign: 'center' }}>
+            <TextButton
+              text="Show More Cities..."
+              iconBefore={['fas', 'arrow-down']}
+              onClick={handleMoreCities}
+              size={theme.ms(0)}
+              color={theme.black}
+              bgColor="white"
+            />
+          </div>
         )}
       </div>
     </Container>

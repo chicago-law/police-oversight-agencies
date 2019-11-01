@@ -16,6 +16,7 @@ const Container = styled('div')<StyleProps>`
   .chart-container {
     margin-top: 2em;
     .heading {
+      display: flex;
       margin-bottom: 1em;
       span {
         display: inline-block;
@@ -24,7 +25,7 @@ const Container = styled('div')<StyleProps>`
         font-size: ${props => props.theme.ms(-2)};
         font-weight: bold;
         &:first-child {
-          width: ${props => props.leftAxisWidth}px;
+          flex: 0 0 ${props => props.leftAxisWidth}px;
         }
       }
     }

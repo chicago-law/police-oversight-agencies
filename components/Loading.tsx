@@ -29,7 +29,7 @@ const Loading = ({ height }: OwnProps) => {
   const [big, setBig] = useState(1)
 
   useEffect(() => {
-    window.setInterval(() => {
+    setInterval(() => {
       setBig((prev) => {
         if (prev === 5) return 1
         return prev + 1

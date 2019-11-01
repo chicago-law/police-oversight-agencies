@@ -11,10 +11,25 @@ const StyledFooter = styled('footer')`
   ul {
     display: flex;
     align-items: flex-start;
+    @media (max-width: ${props => props.theme.bP.dMd}) {
+      justify-content: space-between;
+    }
+    @media (max-width: ${props => props.theme.bP.mR}) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
     li {
       display: inline-flex;
       margin-right: 5em;
       font-size: ${props => props.theme.ms(-2)};
+      @media (max-width: ${props => props.theme.bP.dMd}) {
+        margin-right: 0;
+        padding: 0 1em;
+      }
+      @media (max-width: ${props => props.theme.bP.mR}) {
+        margin-bottom: 2em;
+      }
       p, a {
         color: ${props => props.theme.lightGray};
         font-weight: normal;
@@ -30,8 +45,10 @@ const StyledFooter = styled('footer')`
       }
       .link-with-icon {
         display: inline-flex;
-        align-items: center;
-        svg {
+        align-items: baseline;
+        .svg-inline--fa {
+          position: relative;
+          top: 2px;
           margin: 0 0.5em;
         }
       }

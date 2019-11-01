@@ -10,6 +10,13 @@ const Container = styled('div')`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2em;
+  @media (max-width: ${props => props.theme.bP.mR}) {
+    flex-direction: column;
+    align-items: stretch;
+    >div:first-child {
+      margin-bottom: 2em;
+    }
+  }
   .search {
     .fa-search {
       position: relative;
