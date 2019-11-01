@@ -28,7 +28,6 @@ const Container = styled('div')`
     margin-bottom: 0.25em;
   }
   label {
-    text-transform: capitalize;
     &.active {
       font-weight: bold;
       color: ${props => props.theme.blue()};

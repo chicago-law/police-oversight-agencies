@@ -13,9 +13,6 @@ const Container = styled('div')`
   margin-bottom: 0.25em;
   padding-right: 2.5em;
   cursor: pointer;
-  .roles {
-    text-transform: capitalize;
-  }
   .description {
     /* Should match the padding given to cells in the rows. */
     padding: 0.5em;
@@ -97,11 +94,11 @@ const AgencyTableRow = ({ agencyId }: OwnProps) => {
         <div>{city.name}</div>
         <div>{stateAbbr(city.state)}</div>
         <div>{city.population.toLocaleString()}</div>
-        <div className="roles">{agency.primary_role}</div>
+        <div className="capitalize">{agency.primary_role}</div>
         <div>{agency.year_established}</div>
         <div>{agency.year_amended}</div>
         <div>{agencyRoles.length}</div>
-        <div className="roles">{agencyRoles.map(role => formatRoleName(role)).join(', ')}</div>
+        <div>{agencyRoles.map(role => formatRoleName(role)).join(', ')}</div>
       </div>
 
       <button

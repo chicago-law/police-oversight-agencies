@@ -41,9 +41,6 @@ const Container = styled('li')`
   p {
     margin: 0;
     &.agency {
-      strong {
-        text-transform: capitalize;
-      }
       &.none {
         opacity: 0.5;
       }

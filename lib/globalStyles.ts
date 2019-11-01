@@ -71,6 +71,9 @@ const GlobalStyles = createGlobalStyle`
   a:hover {
     opacity: 0.75;
   }
+  .capitalize {
+    text-transform: capitalize;
+  }
 
   /* Lists */
   li {

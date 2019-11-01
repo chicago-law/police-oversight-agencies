@@ -38,7 +38,6 @@ const Container = styled('div')`
       font-size: ${props => props.theme.ms(-1)};
       font-weight: bold;
       border-radius: 4px;
-      text-transform: capitalize;
       color: ${props => props.theme.blue()};
       transition: color 100ms ease-out, background-color 100ms ease-out;
       svg {

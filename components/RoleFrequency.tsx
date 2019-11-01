@@ -50,7 +50,6 @@ const Container = styled('div')<StyleProps>`
     }
     .label {
       flex: 0 0 ${props => props.leftAxisWidth}px;
-      text-transform: capitalize;
       font-weight: bold;
     }
   }

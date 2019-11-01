@@ -28,7 +28,6 @@ const Container = styled('div')`
       font-family: ${props => props.theme.proximaNova};
       font-size: ${props => props.theme.ms(-2)};
       color: ${props => props.theme.lightGray};
-      text-transform: capitalize;
       &.top-row {
         padding: 0.75em 1.5em;
       }
@@ -76,7 +75,6 @@ const Container = styled('div')`
   .top-combos {
     margin-top: 4em;
     p {
-      text-transform: capitalize;
       margin-bottom: 0.75em;
     }
   }
@@ -105,7 +103,7 @@ const RoleCombinations = () => {
       Object.values(roleColumns).forEach((roleB) => {
         if (!comboLookup(roleA, roleB, library)) {
           library.push({
-            roles: [roleA, roleB] as [roleColumns, roleColumns],
+            roles: [formatRoleName(roleA), formatRoleName(roleB)] as [roleColumns, roleColumns],
             tally: countRoleCombos(roleA, roleB, agencies, cities),
           })
         }
@@ -199,7 +197,7 @@ const RoleCombinations = () => {
           combo.roles.length === 2 && (
             combo.roles[0] !== combo.roles[1]
               ? <p key={combo.roles.join('')}><strong>{combo.roles.join(' + ')}:</strong> {combo.tally}</p>
-              : <p key={combo.roles.join('')}><strong>{combo.roles[0]} (as Sole Oversight Function):</strong> {combo.tally}</p>
+              : <p key={combo.roles.join('')}><strong>{combo.roles[0]} (as sole oversight function):</strong> {combo.tally}</p>
           )
         ))}
       </div>
