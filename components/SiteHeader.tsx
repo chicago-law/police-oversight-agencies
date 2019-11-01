@@ -16,13 +16,13 @@ const Container = styled('header')`
   }
   p {
     margin: 0 auto;
-    max-width: 35em;
+    max-width: 50em;
   }
 `
 
 const SiteHeader = () => (
   <Container>
-    <h1>Police Oversight Agencies in 100 Largest U.S. Cities</h1>
+    <h1>Police Oversight Agencies in<br />100 Largest U.S. Cities</h1>
     <h5>By Sharon Fairley &amp; The University of Chicago Law School Police Accountability Clinic</h5>
     <p>
       <strong>Loren</strong> gypsum dolor sit meat, ecus linguists efficient ea, veil sale disciple at. Nahum slum vociferous e viz, ad discern inimical perambulator bis. Ea an definiteness dissents dissident, ileum labor ram it. Erudite commune consecrate re tied. Ad ram leis lucid lies, in quo dis risque civics cum, re consul sol eat usu. Per it pique time am. Ed ea clit a elect ram referent, at diode imper diet enc.

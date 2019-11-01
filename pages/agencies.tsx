@@ -10,6 +10,7 @@ import { roleColumns } from '../lib/roleColumns'
 import { compareAgencies, AgencySortDimensions } from '../lib/compareAgencies'
 import AgencyHeaderRow from '../components/AgencyHeaderRow'
 import AgencyTableRow from '../components/AgencyTableRow'
+import Loading from '../components/Loading'
 
 const Container = styled('div')`
   position: relative;
@@ -79,11 +80,14 @@ const Agencies = () => {
       />
       <div className="table">
         <AgencyHeaderRow sort={sort} setSort={setSort} />
-        {Object.keys(agencies).length > 0 && Object.keys(cities).length > 0 && (
-          filteredAgencies.map(agency => (
-            <AgencyTableRow key={agency.id} agencyId={agency.id} />
-          ))
-        )}
+        {Object.keys(agencies).length > 0 && Object.keys(cities).length > 0
+          ? (
+            filteredAgencies.map(agency => (
+              <AgencyTableRow key={agency.id} agencyId={agency.id} />
+            ))
+          ) : (
+            <Loading />
+          )}
       </div>
     </Container>
   )

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 import { roleColumns } from '../lib/roleColumns'
 import RoleFilterPopup from './RoleFilterPopup'
+import formatRoleName from '../lib/formatRoleName'
 
 const Container = styled('div')`
   display: flex;
@@ -77,7 +78,7 @@ const AgencyFilters = ({
       </div>
       <div className="roles">
         <button type="button" onClick={handleRoleFilterClick}>
-          Roles: {reqRoles.length ? reqRoles.join(', ') : 'Any'}
+          Roles: {reqRoles.length ? reqRoles.map(role => formatRoleName(role)).join(', ') : 'Any'}
           <FontAwesomeIcon icon={['fas', 'cog']} />
         </button>
         {displayPopup && (

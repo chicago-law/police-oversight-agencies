@@ -11,6 +11,7 @@ import stateAbbr from '../lib/stateAbbr'
 import TextButton from '../components/TextButton'
 import { theme } from '../lib/theme'
 import { fetchAgencies } from '../store/agencies/actions'
+import Loading from '../components/Loading'
 
 const Container = styled('div')`
   display: flex;
@@ -37,6 +38,7 @@ const Cities = () => {
   const [cityLimit, setCityLimit] = useState(5)
 
   const cities = useSelector((state: AppState) => state.cities)
+  const agencies = useSelector((state: AppState) => state.agencies)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -82,6 +84,9 @@ const Cities = () => {
           setQuery={setQuery}
           setSelectedState={setSelectedState}
         />
+        {(Object.keys(agencies).length === 0 || Object.keys(cities).length === 0) && (
+          <Loading />
+        )}
         {filteredCityList.length > 0 && (
           <ul>
             {filteredCityList.slice(0, cityLimit).map(city => (

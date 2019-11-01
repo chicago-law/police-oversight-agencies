@@ -5,6 +5,7 @@ import animations from '../lib/animations'
 import { theme } from '../lib/theme'
 import { roleColumns } from '../lib/roleColumns'
 import useOutsideClickDetector from '../hooks/useOutsideClickDetector'
+import formatRoleName from '../lib/formatRoleName'
 
 const Container = styled('div')`
   position: absolute;
@@ -111,7 +112,7 @@ const RoleFilterPopup = ({
                 checked={tempReqRoles.includes(role)}
                 onChange={() => handleCheckbox(role)}
               />
-              {role}
+              {formatRoleName(role)}
             </label>
           </li>
         ))}

@@ -7,7 +7,7 @@ const StyledFooter = styled('footer')`
   padding: 2em;
   background: ${props => props.theme.darkGray};
   font-family: ${props => props.theme.proximaNova};
-  box-shadow: 0 5px 15px rgba(0,0,0,0.25) inset;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25) inset;
   ul {
     display: flex;
     align-items: flex-start;

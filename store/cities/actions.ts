@@ -21,7 +21,7 @@ export const fetchCities = (callback?: () => void) => async (
     const data: { cities: City[] } = await res.json()
     const cities = arrayToObject(data.cities, 'id')
 
-    dispatch(receiveCities(cities as Cities))
+    dispatch(receiveCities(cities))
     if (callback) callback()
   }
 }
