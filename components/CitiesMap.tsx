@@ -9,7 +9,7 @@ import { AppState } from '../store'
 import getAgencyRoles from '../lib/getAgencyRoles'
 
 const Container = styled('div')`
-  margin-top: 2em;
+  margin: 2em 0;
   .state {
     stroke: white;
     stroke-width: 1px;
@@ -32,39 +32,50 @@ const Container = styled('div')`
   }
   .legend {
     margin-top: 2em;
-    >div {
+    .legend-row {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       margin-bottom: 0.75em;
     }
-    p {
-      font-family: ${props => props.theme.proximaNova};
-      font-size: ${props => props.theme.ms(-1)};
+    span {
+      font-weight: bold;
+      font-size: ${props => props.theme.ms(1)};
+    }
+    .size-ex, .color-ex {
+      width: 4em;
+      margin: 0 0.5em;
     }
     .size-ex {
-      display: inline-block;
-      margin-right: 0.5em;
-      background: ${props => props.theme.darkBlue};
-      border-radius: 100%;
-      &.sm {
-        height: 0.5em;
-        width: 0.5em;
-      }
-      &.md {
-        height: 0.85em;
-        width: 0.85em;
-      }
-      &.lg {
-        height: 1.25em;
-        width: 1.25em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      >div {
+        display: inline-block;
+        background: ${props => props.theme.darkBlue};
+        border-radius: 100%;
+        &.sm {
+          height: 0.5em;
+          width: 0.5em;
+        }
+        &.md {
+          height: 0.85em;
+          width: 0.85em;
+        }
+        &.lg {
+          height: 1.25em;
+          width: 1.25em;
+        }
       }
     }
     .color-ex {
       height: 0.5em;
-      width: 3.6em;
-      margin-right: 0.5em;
       border-radius: 2px;
       background: ${props => `linear-gradient(to right, ${props.theme.darkBlue}, ${props.theme.lightBlue})`}
+    }
+    p {
+      font-family: ${props => props.theme.proximaNova};
+      font-size: ${props => props.theme.ms(-1)};
+      margin-left: 1em;
     }
   }
 `
@@ -179,14 +190,20 @@ const CitiesMap = ({
     <Container>
       <svg className="map" ref={svgRef} viewBox={`0 0 ${width} ${height}`} />
       <div className="legend">
-        <div>
+        <div className="legend-row">
+          <span>-</span>
           <div className="color-ex" />
+          <span>+</span>
           <p>Color scales with number of oversight functions city employs.</p>
         </div>
-        <div>
-          <div className="size-ex sm" />
-          <div className="size-ex md" />
-          <div className="size-ex lg" />
+        <div className="legend-row">
+          <span>-</span>
+          <div className="size-ex">
+            <div className="sm" />
+            <div className="md" />
+            <div className="lg" />
+          </div>
+          <span>+</span>
           <p>Size scales with city's population.</p>
         </div>
       </div>
