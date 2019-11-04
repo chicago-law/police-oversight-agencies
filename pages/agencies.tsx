@@ -1,6 +1,8 @@
 import styled from 'styled-components'
-import { useState, useEffect, useMemo } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useState, useMemo } from 'react'
+import { useSelector } from 'react-redux'
+import { NextPage, NextPageContext } from 'next'
+import { Store } from 'redux'
 import AgencyFilters from '../components/AgencyFilters'
 import { AppState } from '../store'
 import { fetchCities } from '../store/cities/actions'
@@ -39,16 +41,10 @@ const Container = styled('div')`
   }
 `
 
-const Agencies = () => {
+const Agencies: NextPage = () => {
   const [query, setQuery] = useState('')
   const [reqRoles, setReqRoles] = useState<roleColumns[]>([])
   const [sort, setSort] = useState<[AgencySortDimensions, 'asc' | 'desc']>(['name', 'asc'])
-
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchCities())
-    dispatch(fetchAgencies())
-  }, [])
 
   const agencies = useSelector(({ agencies }: AppState) => agencies)
   const cities = useSelector(({ cities }: AppState) => cities)
@@ -107,6 +103,14 @@ const Agencies = () => {
       </div>
     </Container>
   )
+}
+
+Agencies.getInitialProps = async ({ store }: NextPageContext & { store: Store }) => {
+  await Promise.all([
+    store.dispatch(fetchCities() as any),
+    store.dispatch(fetchAgencies() as any),
+  ])
+  return store
 }
 
 export default Agencies

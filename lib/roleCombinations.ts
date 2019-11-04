@@ -1,5 +1,5 @@
 import { roleColumns } from './roleColumns'
-import { AgenciesStates, Agencies } from '../store/agencies/types'
+import { AgenciesState, Agencies } from '../store/agencies/types'
 import { CitiesState, Cities } from '../store/cities/types'
 
 export interface Combo {
@@ -10,7 +10,7 @@ export interface Combo {
 export function countRoleCombosInCities(
   roleA: roleColumns,
   roleB: roleColumns,
-  agencies: AgenciesStates,
+  agencies: AgenciesState,
   cities: CitiesState,
 ) {
   let cityTally = 0

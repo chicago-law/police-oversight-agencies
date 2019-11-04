@@ -1,6 +1,7 @@
 import { CitiesState, CitiesActionTypes, RECEIVE_CITIES } from './types'
+import defaultInitialState from '../defaultInitialState'
 
-export const initialState: CitiesState = {}
+export const initialState = defaultInitialState.cities
 
 const cities = (
   state: CitiesState = initialState,

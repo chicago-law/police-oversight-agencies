@@ -1,11 +1,12 @@
-import { AgenciesStates, AgenciesActionTypes, RECEIVE_AGENCIES } from './types'
+import { AgenciesState, AgenciesActionTypes, RECEIVE_AGENCIES } from './types'
+import defaultInitialState from '../defaultInitialState'
 
-export const initialState: AgenciesStates = {}
+export const initialState = defaultInitialState.agencies
 
 const cities = (
-  state: AgenciesStates = initialState,
+  state: AgenciesState = initialState,
   action: AgenciesActionTypes,
-): AgenciesStates => {
+): AgenciesState => {
   switch (action.type) {
     case RECEIVE_AGENCIES:
       return {

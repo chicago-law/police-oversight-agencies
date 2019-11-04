@@ -1,6 +1,8 @@
 import styled from 'styled-components'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
+import { NextPageContext, NextPage } from 'next'
+import { Store } from 'redux'
 import SectionHeading from '../components/SectionHeading'
 import CitiesMap from '../components/CitiesMap'
 import CityListItem from '../components/CityListItem'
@@ -47,19 +49,13 @@ const Container = styled('div')`
   }
 `
 
-const Cities = () => {
+const Cities: NextPage = () => {
   const [selectedState, setSelectedState] = useState('')
   const [query, setQuery] = useState('')
   const [cityLimit, setCityLimit] = useState(5)
 
   const cities = useSelector((state: AppState) => state.cities)
   const agencies = useSelector((state: AppState) => state.agencies)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchAgencies())
-    dispatch(fetchCities())
-  }, [])
 
   // Reset the city list limit if the state or query changes.
   useEffect(() => {
@@ -129,10 +125,12 @@ const Cities = () => {
   )
 }
 
-// Cities.getInitialProps = async ({ store }) => {
-//   return new Promise((res) => {
-//     store.dispatch(fetchCities(res))
-//   })
-// }
+Cities.getInitialProps = async ({ store }: NextPageContext & {store: Store }) => {
+  await Promise.all([
+    store.dispatch(fetchCities() as any),
+    store.dispatch(fetchAgencies() as any),
+  ])
+  return store
+}
 
 export default Cities

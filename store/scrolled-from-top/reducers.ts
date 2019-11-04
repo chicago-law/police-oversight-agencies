@@ -1,8 +1,7 @@
 import { ScrolledFromTopState, ScrolledFromTopActionTypes, REPORT_SCROLL_POS } from './types'
+import defaultInitialState from '../defaultInitialState'
 
-export const initialState: ScrolledFromTopState = typeof window !== 'undefined'
-  ? window.pageYOffset
-  : 0
+export const initialState = defaultInitialState.scrolledFromTop
 
 const session = (
   state: ScrolledFromTopState = initialState,

@@ -4,6 +4,7 @@ import fetch from 'isomorphic-unfetch'
 import { AppState } from '..'
 import { Agencies, AgenciesActionTypes, RECEIVE_AGENCIES, Agency } from './types'
 import arrayToObject from '../../lib/arrayToObject'
+import getUrlHost from '../../lib/getUrlHost'
 
 export const receiveAgencies = (
   agencies: Agencies,
@@ -17,7 +18,7 @@ export const fetchAgencies = (callback?: () => void) => async (
   getState: () => AppState,
 ) => {
   if (Object.keys(getState().agencies).length === 0) {
-    const res = await fetch('/api/agencies')
+    const res = await fetch(`${getUrlHost()}/api/agencies`)
     const data: { agencies: Agency[] } = await res.json()
     const agencies = arrayToObject(data.agencies, 'id')
 

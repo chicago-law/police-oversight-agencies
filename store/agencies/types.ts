@@ -21,7 +21,7 @@ export type Agencies = {
   [agencyId: string]: Agency;
 }
 
-export type AgenciesStates = Agencies
+export type AgenciesState = Agencies
 
 export const RECEIVE_AGENCIES = 'RECEIVE_AGENCIES'
 export interface ReceiveAgencies {
