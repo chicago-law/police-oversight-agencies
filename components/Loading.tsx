@@ -7,6 +7,7 @@ const Container = styled('div')<{ height?: number }>`
   align-items: center;
   justify-content: center;
   height: ${props => (props.height ? `${props.height}px` : 'auto')};
+  padding-top: 1em;
   .bar {
     opacity: 0.5;
     height: 20px;
@@ -29,14 +30,14 @@ const Loading = ({ height }: OwnProps) => {
   const [big, setBig] = useState(1)
 
   useEffect(() => {
-    setInterval(() => {
+    const flashing = setInterval(() => {
       setBig((prev) => {
         if (prev === 5) return 1
         return prev + 1
       })
     }, 175)
     return () => {
-      clearInterval()
+      clearInterval(flashing)
     }
   }, [])
 
