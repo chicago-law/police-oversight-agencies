@@ -8,7 +8,9 @@ const Container = styled('div')`
     flex: 0 0 4.7em;
     text-align: right;
     padding-right: 0.9em;
-    width: 4.7em;
+    @media (max-width: ${props => props.theme.bP.mS}) {
+      flex: 0 0 auto;
+    }
   }
   svg {
     color: ${props => props.theme.darkBlue};
