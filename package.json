@@ -30,6 +30,7 @@
     "next-redux-wrapper": "^3.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-ga": "^2.7.0",
     "react-redux": "^7.1.1",
     "react-transition-group": "^4.3.0",
     "redux": "^4.0.4",

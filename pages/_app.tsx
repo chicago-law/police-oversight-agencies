@@ -1,5 +1,6 @@
 import React from 'react'
 import App from 'next/app'
+import Router from 'next/router'
 import { Provider } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -9,6 +10,7 @@ import '../normalize.css'
 import GlobalStyles from '../lib/globalStyles'
 import { initializeStore } from '../store'
 import faIcons from '../lib/fontAwesome'
+import { initGA, logPageView } from '../lib/analytics'
 
 library.add(...faIcons)
 
@@ -17,6 +19,14 @@ interface Props {
 }
 
 class MyApp extends App<Props> {
+  componentDidMount() {
+    initGA()
+    logPageView()
+    if (Router && Router.router) {
+      Router.router.events.on('routeChangeComplete', logPageView)
+    }
+  }
+
   render() {
     const { Component, pageProps, store } = this.props
 
