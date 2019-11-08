@@ -39,7 +39,8 @@ const Container = styled('li')`
     text-decoration: underline;
   }
   p {
-    margin: 0;
+    margin: 0 0 0.35em 0;
+    line-height: 1.4;
     &.agency {
       &.none {
         opacity: 0.5;
@@ -48,6 +49,12 @@ const Container = styled('li')`
   }
   .agency-detail {
     margin-top: 2em;
+  }
+  .field-label {
+    font-size: ${props => props.theme.ms(-1)};
+    padding-right: 0.25em;
+    font-family: ${props => props.theme.proximaNova};
+    font-weight: bold;
   }
   .text-button {
     margin-top: 0.5em;
@@ -109,7 +116,7 @@ const CityListItem = ({ cityId }: OwnProps) => {
           <>
             {Object.entries(agenciesByRole).map(([role, agencies]) => (
               <p key={role} className={agencies.length ? 'agency ' : 'agency none'}>
-                <strong>{formatRoleName(role as roleColumns)}: </strong>
+                <span className="field-label">{formatRoleName(role as roleColumns)}: </span>
                 {agencies.length ? agencies : 'None'}
               </p>
             ))}
@@ -124,12 +131,12 @@ const CityListItem = ({ cityId }: OwnProps) => {
                 {agencies.map(agency => (
                   <div key={agency.id} className="agency-detail">
                     <h4>{agency.name}</h4>
-                    <p><strong>Est: </strong>{agency.year_established !== null ? agency.year_established : '(unknown)' }</p>
+                    <p><span className="field-label">Est: </span>{agency.year_established !== null ? agency.year_established : '(unknown)' }</p>
                     {agency.year_amended && (
-                      <p><strong>Amended: </strong>{agency.year_amended}</p>
+                      <p><span className="field-label">Amended: </span>{agency.year_amended}</p>
                     )}
-                    <p><strong>Primary Role: </strong>{agency.primary_role}</p>
-                    <p><strong>Description: </strong>{agency.description}</p>
+                    <p><span className="field-label">Primary Role: </span>{agency.primary_role}</p>
+                    <p><span className="field-label">Description: </span>{agency.description}</p>
                   </div>
                 ))}
               </>

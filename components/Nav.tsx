@@ -49,8 +49,7 @@ const Container = styled('nav')`
       color: white;
     }
     a.active {
-      background: rgba(255, 255, 255, 0.1);
-      border: 3px solid ${props => props.theme.blue()};
+      background: ${props => props.theme.darkRed};
     }
     .page-name {
       display: flex;
