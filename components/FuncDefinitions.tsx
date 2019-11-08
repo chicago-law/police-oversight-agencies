@@ -25,9 +25,9 @@ const RoleList = styled('ul')`
   }
 `
 
-const RoleDefinitions = () => (
+const FuncDefinitions = () => (
   <>
-    <SectionHeading heading="Role Definitions">
+    <SectionHeading heading="Function Definitions">
       Based on the available information, each civilian oversight entity identified is classified as providing one or more of the following oversight functions:
     </SectionHeading>
     <RoleList>
@@ -56,4 +56,4 @@ const RoleDefinitions = () => (
   </>
 )
 
-export default RoleDefinitions
+export default FuncDefinitions

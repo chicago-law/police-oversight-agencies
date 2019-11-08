@@ -1,25 +1,28 @@
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { theme } from '../lib/theme'
 import ActiveLink from './ActiveLink'
 
 const Container = styled('nav')`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 7em 0 8em 0;
+  margin: 0 0 7em 0;
   @media (max-width: ${props => props.theme.bP.mR}) {
     flex-direction: column;
     align-items: stretch;
     margin: 4em 0;
-    h5 {
-      margin-bottom: 2em;
-      text-align: center;
-    }
+  }
+  .explore {
+    display: block;
+    text-transform: uppercase;
+    font-family: ${props => props.theme.proximaNova};
+    margin-bottom: 2em;
+    font-size: ${props => props.theme.ms(1)};
+    text-align: center;
+    opacity: 0.5;
+    letter-spacing: 3px;
   }
   ul {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     @media (max-width: ${props => props.theme.bP.mR}) {
       justify-content: space-around;
     }
@@ -28,69 +31,104 @@ const Container = styled('nav')`
     }
   }
   li {
+    position: relative;
     list-style-type: none;
-    margin: 0 1.5em;
+    margin: 0 1em;
     @media (max-width: ${props => props.theme.bP.mR}) {
       margin: 0;
     }
     @media (max-width: ${props => props.theme.bP.mS}) {
       margin: 0 0 1em 0;
     }
-  }
-  a {
-    position: relative;
-    font-size: ${theme.ms(2)};
-    font-family: ${theme.proximaNova};
-    text-transform: uppercase;
-    font-weight: normal;
-    color: white;
-    opacity: 0.75;
-    transition: opacity 200ms ease-out;
-  }
-  a:hover {
-    opacity: 1;
-  }
-  a:after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: -0.5em;
-    height: 6px;
-    width: 100%;
-    transform: scale(0);
-    background: ${theme.blue()};
-    transition: transform 200ms ease-out;
-  }
-  a.active {
-    opacity: 1;
-    font-weight: bold;
-  }
-  a.active:after {
-    transform: scale(1);
+    a {
+      display: block;
+      height: 100%;
+      padding: 1em 1.5em 2em 1.5em;
+      background: rgba(255, 255, 255, 0.05);
+      border: 3px solid transparent;
+      color: white;
+    }
+    a.active {
+      background: rgba(255, 255, 255, 0.1);
+      border: 3px solid ${props => props.theme.blue()};
+    }
+    .page-name {
+      display: flex;
+      align-items: center;
+      h2 {
+        display: inline-block;
+        font-size: ${props => props.theme.ms(3)};
+      }
+      svg {
+        margin-right: 0.75em;
+        font-size: ${theme.ms(2)};
+        .fa-primary {
+          fill: ${props => props.theme.red};
+        }
+        .fa-secondary {
+          fill: ${props => props.theme.blue()};
+          opacity: 1;
+        }
+      }
+      span {
+        font-size: ${theme.ms(2)};
+      }
+    }
+    .explanation {
+      font-family: ${props => props.theme.proximaNova};
+      font-size: ${props => props.theme.ms(-1)};
+      font-weight: normal;
+    }
   }
 `
 
-const Nav = () => (
-  <Container>
-    <h5>Explore: </h5>
-    <ul>
-      <li>
-        <ActiveLink href="/cities" scroll={false}>
-          <a>Cities</a>
-        </ActiveLink>
-      </li>
-      <li>
-        <ActiveLink href="/agencies" scroll={false}>
-          <a>Agencies</a>
-        </ActiveLink>
-      </li>
-      <li>
-        <ActiveLink href="/roles" scroll={false}>
-          <a>Roles</a>
-        </ActiveLink>
-      </li>
-    </ul>
-  </Container>
-)
+const CompactNav = () => {
+  return (
+    <Container>
+      <span className="explore">Explore: </span>
+      <ul>
+        <li>
+          <ActiveLink href="/cities" scroll={false}>
+            <a>
+              <div className="page-name">
+                <FontAwesomeIcon icon={['fad', 'map-marked-alt']} />
+                <h2>Cities</h2>
+              </div>
+              <p className="explanation">
+                Interactive map showing the civilian oversight agencies by city and state.
+              </p>
+            </a>
+          </ActiveLink>
+        </li>
+        <li>
+          <ActiveLink href="/agencies" scroll={false}>
+            <a>
+              <div className="page-name">
+                <FontAwesomeIcon icon={['fad', 'list-ol']} />
+                <h2>Agencies</h2>
+              </div>
+              <p className="explanation">
+                Searchable and sortable list of all the oversight agencies with detailed information.
+              </p>
+            </a>
+          </ActiveLink>
+        </li>
+        <li>
+          <ActiveLink href="/functions" scroll={false}>
+            <a>
+              <div className="page-name">
+                <FontAwesomeIcon icon={['fad', 'gavel']} />
+                <h2>Functions</h2>
+              </div>
+              <p className="explanation">
+                Information about the prevalence and classification of the various forms of oversight.
+              </p>
+            </a>
+          </ActiveLink>
+        </li>
+      </ul>
+    </Container>
+  )
+}
 
-export default Nav
+export default CompactNav

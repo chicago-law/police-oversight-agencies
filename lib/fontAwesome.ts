@@ -15,6 +15,11 @@ import {
   faExternalLinkSquareAlt,
   faSearch,
 } from '@fortawesome/pro-solid-svg-icons'
+import {
+  faGavel,
+  faListOl,
+  faMapMarkedAlt,
+} from '@fortawesome/pro-duotone-svg-icons'
 
 const faIcons = [
   faAngleDown,
@@ -26,8 +31,11 @@ const faIcons = [
   faCog,
   faEnvelope,
   faExternalLinkSquareAlt,
-  faSearch,
+  faGavel,
   faGithub,
+  faListOl,
+  faMapMarkedAlt,
+  faSearch,
 ]
 
 export default faIcons

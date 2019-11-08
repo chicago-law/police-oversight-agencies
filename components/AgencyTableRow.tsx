@@ -96,7 +96,6 @@ const AgencyTableRow = ({ agencyId }: OwnProps) => {
         <div>{city.population.toLocaleString()}</div>
         <div className="capitalize">{agency.primary_role}</div>
         <div>{agency.year_established}</div>
-        <div>{agency.year_amended}</div>
         <div>{agencyRoles.length}</div>
         <div>{agencyRoles.map(role => formatRoleName(role)).join(', ')}</div>
       </div>

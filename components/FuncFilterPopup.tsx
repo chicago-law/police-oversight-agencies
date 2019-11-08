@@ -53,7 +53,7 @@ interface OwnProps {
   setReqRoles: (newRoles: roleColumns[]) => void;
 }
 
-const RoleFilterPopup = ({
+const FuncFilterPopup = ({
   setDisplayPopup,
   reqRoles,
   setReqRoles,
@@ -134,4 +134,4 @@ const RoleFilterPopup = ({
   )
 }
 
-export default RoleFilterPopup
+export default FuncFilterPopup

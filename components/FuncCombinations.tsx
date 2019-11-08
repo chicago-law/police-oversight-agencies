@@ -81,7 +81,7 @@ const Container = styled('div')`
   }
 `
 
-const RoleCombinations = () => {
+const FuncCombinations = () => {
   const [highlightedRoles, setHighlightedRoles] = useState<[number | null, number | null]>([null, null])
   const agencies = useSelector((state: AppState) => state.agencies)
   const cities = useSelector((state: AppState) => state.cities)
@@ -137,8 +137,8 @@ const RoleCombinations = () => {
 
   return (
     <Container>
-      <SectionHeading heading="Role Combinations">
-        Which combinations of oversight roles within a single city are most prevalent?
+      <SectionHeading heading="Function Combinations">
+        Which combinations of oversight functions within a single city are most prevalent?
       </SectionHeading>
       {!dataReady
         ? <Loading />
@@ -181,4 +181,4 @@ const RoleCombinations = () => {
   )
 }
 
-export default RoleCombinations
+export default FuncCombinations

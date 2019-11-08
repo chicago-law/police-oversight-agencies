@@ -13,19 +13,17 @@ import { compareAgencies, AgencySortDimensions } from '../lib/compareAgencies'
 import AgencyHeaderRow from '../components/AgencyHeaderRow'
 import AgencyTableRow from '../components/AgencyTableRow'
 import Loading from '../components/Loading'
+import animations from '../lib/animations'
 
 const Container = styled('div')`
   position: relative;
-  .scrolling-container {
-    width: 100%;
-    overflow-x: auto;
-  }
+  ${animations.fadeSlideUp(1200)};
   .table {
     min-width: 62em;
     min-height: 15em;
     .columned-row {
       display: grid;
-      grid-template-columns: 1fr 8em 4em 6em 8em 5em 5em 3em 12em;
+      grid-template-columns: 1fr 8em 4em 6em 8em 5em 3em 12em;
       >div {
         padding: 0.5em;
       }
@@ -87,19 +85,17 @@ const Agencies: NextPage = () => {
         reqRoles={reqRoles}
         setReqRoles={setReqRoles}
       />
-      <div className="scrolling-container">
-        <div className="table">
-          <AgencyHeaderRow sort={sort} setSort={setSort} />
-          {!dataReady && (
-            <Loading />
-          )}
-          {filteredAgencies.map(agency => (
-            <AgencyTableRow key={agency.id} agencyId={agency.id} />
-          ))}
-          {filteredAgencies.length === 0 && dataReady && (
-            <p className="no-results">No agencies found with the current filter criteria.</p>
-          )}
-        </div>
+      <div className="table">
+        <AgencyHeaderRow sort={sort} setSort={setSort} />
+        {!dataReady && (
+          <Loading />
+        )}
+        {filteredAgencies.map(agency => (
+          <AgencyTableRow key={agency.id} agencyId={agency.id} />
+        ))}
+        {filteredAgencies.length === 0 && dataReady && (
+          <p className="no-results">No agencies found with the current filter criteria.</p>
+        )}
       </div>
     </Container>
   )

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import LawSchoolLogo from '../public/static/uc_law.svg'
 
-const StyledFooter = styled('footer')`
+const Container = styled('footer')`
   margin: 10em 0 0 0;
   padding: 2em;
   background: ${props => props.theme.darkGray};
@@ -35,12 +35,12 @@ const StyledFooter = styled('footer')`
         font-weight: normal;
       }
       p {
-        max-width: 20em;
+        max-width: 30em;
       }
       .logo {
         position: relative;
         top: 6px;
-        width: 300px;
+        max-width: 300px;
         opacity: 0.8;
       }
       .link-with-icon {
@@ -57,7 +57,7 @@ const StyledFooter = styled('footer')`
 `
 
 const SiteFooter = () => (
-  <StyledFooter>
+  <Container>
     <ul>
       <li>
         <a href="https://www.law.uchicago.edu" target="_blank" rel="noopener noreferrer">
@@ -65,7 +65,9 @@ const SiteFooter = () => (
         </a>
       </li>
       <li>
-        <p>Loren gypsum dolor sit meat, ecus linguists efficient ea, veil sale disciple at. Nahum slum vociferous e viz, ad discern inimical perambulator bis. Ea an definiteness dissents dissident, ileum labor ram it.</p>
+        <p>
+          The author of the survey has attempted to validate the data provided on this site to the extent possible using online information resources, but makes no representations about the accuracy of the information provided herein. In particular, the author notes that the field of civilian oversight of police is changing rapidly and this survey is only a snapshot of the field taken at the time of data-gathering. We hope to periodically provide updated information.
+        </p>
       </li>
       <li>
         <a href="" className="link-with-icon"><FontAwesomeIcon icon={['fas', 'envelope']} /> Contact</a>
@@ -73,8 +75,13 @@ const SiteFooter = () => (
       <li>
         <a href="" className="link-with-icon"><FontAwesomeIcon icon={['fab', 'github']} /> View source code on Github</a>
       </li>
+      <li>
+        <p>
+          &copy; 2019 Sharon R. Fairley
+        </p>
+      </li>
     </ul>
-  </StyledFooter>
+  </Container>
 )
 
 export default SiteFooter

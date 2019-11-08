@@ -1,14 +1,7 @@
-import { useEffect } from 'react'
-import { useRouter } from 'next/router'
-
 const Index = () => {
-  const router = useRouter()
-  useEffect(() => {
-    router.push('/cities')
-  }, [])
-
   return (
-    <div />
+    /* Just here to take up some space. */
+    <div style={{ padding: '1em' }} />
   )
 }
 

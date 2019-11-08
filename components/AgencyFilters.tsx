@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 import { roleColumns } from '../lib/roleColumns'
-import RoleFilterPopup from './RoleFilterPopup'
+import FuncFilterPopup from './FuncFilterPopup'
 import formatRoleName from '../lib/formatRoleName'
 
 const Container = styled('div')`
@@ -88,7 +88,7 @@ const AgencyFilters = ({
           <FontAwesomeIcon icon={['fas', 'cog']} />
         </button>
         {displayPopup && (
-          <RoleFilterPopup
+          <FuncFilterPopup
             setDisplayPopup={setDisplayPopup}
             reqRoles={reqRoles}
             setReqRoles={setReqRoles}

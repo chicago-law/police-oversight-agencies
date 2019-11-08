@@ -56,7 +56,7 @@ const Container = styled('div')<StyleProps>`
   }
 `
 
-const RoleFrequency = () => {
+const FuncFrequency = () => {
   const chartRef = useRef<HTMLDivElement>(null)
   const agencies = useSelector((state: AppState) => state.agencies)
   const cities = useSelector((state: AppState) => state.cities)
@@ -147,15 +147,15 @@ const RoleFrequency = () => {
 
   return (
     <Container leftAxisWidth={leftAxisWidth}>
-      <SectionHeading heading="Role Frequency">
-        Which oversight roles occur most frequently?
+      <SectionHeading heading="Function Frequency">
+        Which oversight functions occur most frequently?
       </SectionHeading>
       {!dataReady
         ? <Loading />
         : (
           <div className="chart-container">
             <div className="heading">
-              <span className="role">Role</span>
+              <span className="role">Function</span>
               <span className="role">Percentage of Cities with Agency Fulfilling Function</span>
             </div>
             <div className="chart" ref={chartRef} />
@@ -165,4 +165,4 @@ const RoleFrequency = () => {
   )
 }
 
-export default RoleFrequency
+export default FuncFrequency

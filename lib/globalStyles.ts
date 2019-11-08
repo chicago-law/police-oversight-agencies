@@ -30,7 +30,7 @@ const GlobalStyles = createGlobalStyle`
     color: white;
     font-family: ${props => props.theme.garamond};
     font-size: ${props => props.theme.ms(0)};
-    line-height: 1.4;
+    line-height: 1.6;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
   }

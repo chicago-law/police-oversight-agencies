@@ -194,7 +194,7 @@ const CitiesMap = ({
           <span>-</span>
           <div className="color-ex" />
           <span>+</span>
-          <p>Color scales with number of oversight functions city employs.</p>
+          <p>Color lightens with number of oversight functions city employs.</p>
         </div>
         <div className="legend-row">
           <span>-</span>
@@ -204,7 +204,7 @@ const CitiesMap = ({
             <div className="lg" />
           </div>
           <span>+</span>
-          <p>Size scales with city's population.</p>
+          <p>Size increases with city's population.</p>
         </div>
       </div>
     </Container>

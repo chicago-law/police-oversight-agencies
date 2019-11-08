@@ -14,9 +14,11 @@ import TextButton from '../components/TextButton'
 import { theme } from '../lib/theme'
 import { fetchAgencies } from '../store/agencies/actions'
 import Loading from '../components/Loading'
+import animations from '../lib/animations'
 
 const Container = styled('div')`
   display: flex;
+  ${animations.fadeSlideUp(1200)};
   @media (max-width: ${props => props.theme.bP.dSm}) {
     flex-direction: column;
   }

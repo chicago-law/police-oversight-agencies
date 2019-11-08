@@ -10,7 +10,6 @@ export type AgencySortDimensions =
   | 'state'
   | 'primary_role'
   | 'year_established'
-  | 'year_amended'
   | 'role_count'
 
 export const compareAgencies = (
@@ -26,7 +25,6 @@ export const compareAgencies = (
   if (dimension === 'name'
     || dimension === 'primary_role'
     || dimension === 'year_established'
-    || dimension === 'year_amended'
   ) {
     const valueA = a[dimension as keyof Agency]
     const valueB = b[dimension as keyof Agency]
