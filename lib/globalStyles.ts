@@ -11,7 +11,8 @@ const GlobalStyles = createGlobalStyle`
   body:not(.user-is-tabbing) select:focus,
   body:not(.user-is-tabbing) option:focus,
   body:not(.user-is-tabbing) textarea:focus,
-  body:not(.user-is-tabbing) [role="button"]:focus {
+  body:not(.user-is-tabbing) [role="button"]:focus,
+  body:not(.user-is-tabbing) [role="link"]:focus {
     outline: none;
   }
 

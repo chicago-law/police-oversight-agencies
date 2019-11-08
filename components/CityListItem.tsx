@@ -39,7 +39,7 @@ const Container = styled('li')`
     text-decoration: underline;
   }
   p {
-    margin: 0 0 0.35em 0;
+    margin: 0 0 0.25em 0;
     line-height: 1.4;
     &.agency {
       &.none {

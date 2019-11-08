@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useRef } from 'react'
+import { IconPrefix, IconName } from '@fortawesome/pro-solid-svg-icons'
 import { theme } from '../lib/theme'
 import ActiveLink from './ActiveLink'
 
@@ -81,53 +83,64 @@ const Container = styled('nav')`
   }
 `
 
-const CompactNav = () => {
+const Nav = () => {
+  const navRef = useRef<HTMLElement | null>(null)
+
+  function scrollToNav() {
+    const nav = navRef.current
+    if (nav) {
+      nav.scrollIntoView({
+        behavior: 'smooth',
+      })
+    }
+  }
+
+  function makeNavItem(
+    title: string,
+    href: string,
+    icon: [IconPrefix, IconName],
+    explanation: string,
+  ) {
+    return (
+      <li>
+        <ActiveLink href={`/${href}`} scroll={false}>
+          <a onClick={scrollToNav} onKeyDown={scrollToNav} role="link" tabIndex={0}>
+            <div className="page-name">
+              <FontAwesomeIcon icon={icon} />
+              <h2>{title}</h2>
+            </div>
+            <p className="explanation">{explanation}</p>
+          </a>
+        </ActiveLink>
+      </li>
+    )
+  }
+
   return (
     <Container>
-      <span className="explore">Explore: </span>
+      <span className="explore" ref={navRef}>Explore: </span>
       <ul>
-        <li>
-          <ActiveLink href="/cities" scroll={false}>
-            <a>
-              <div className="page-name">
-                <FontAwesomeIcon icon={['fad', 'map-marked-alt']} />
-                <h2>Cities</h2>
-              </div>
-              <p className="explanation">
-                Interactive map showing the civilian oversight agencies by city and state.
-              </p>
-            </a>
-          </ActiveLink>
-        </li>
-        <li>
-          <ActiveLink href="/agencies" scroll={false}>
-            <a>
-              <div className="page-name">
-                <FontAwesomeIcon icon={['fad', 'list-ol']} />
-                <h2>Agencies</h2>
-              </div>
-              <p className="explanation">
-                Searchable and sortable list of all the oversight agencies with detailed information.
-              </p>
-            </a>
-          </ActiveLink>
-        </li>
-        <li>
-          <ActiveLink href="/functions" scroll={false}>
-            <a>
-              <div className="page-name">
-                <FontAwesomeIcon icon={['fad', 'gavel']} />
-                <h2>Functions</h2>
-              </div>
-              <p className="explanation">
-                Information about the prevalence and classification of the various forms of oversight.
-              </p>
-            </a>
-          </ActiveLink>
-        </li>
+        {makeNavItem(
+          'Cities',
+          'cities',
+          ['fad', 'map-marked-alt'],
+          'Interactive map showing the civilian oversight agencies by city and state.',
+        )}
+        {makeNavItem(
+          'Agencies',
+          'agencies',
+          ['fad', 'list-ol'],
+          'Searchable and sortable list of all the oversight agencies with detailed information.',
+        )}
+        {makeNavItem(
+          'Functions',
+          'functions',
+          ['fad', 'gavel'],
+          'Information about the prevalence and classification of the various forms of oversight.',
+        )}
       </ul>
     </Container>
   )
 }
 
-export default CompactNav
+export default Nav
