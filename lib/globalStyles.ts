@@ -63,13 +63,13 @@ const GlobalStyles = createGlobalStyle`
     text-transform: uppercase;
     font-weight: normal;
   }
-  a {
+  a, .looks-like-link {
     color: ${props => props.theme.red};
     text-decoration: none;
     font-weight: bold;
     transition: opacity 150ms ease-out;
   }
-  a:hover {
+  a:hover, .looks-like-link:hover {
     opacity: 0.75;
   }
   .capitalize {

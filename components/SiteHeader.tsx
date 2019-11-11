@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useState } from 'react'
+import { CSSTransition } from 'react-transition-group'
+import C from '../lib/constants'
 
 const Container = styled('header')`
   margin: 4em auto 0 auto;
@@ -31,9 +34,7 @@ const Container = styled('header')`
       }
     }
     button {
-      color: ${props => props.theme.red};
       font-family: ${props => props.theme.proximaNova};
-      font-weight: bold;
       font-size: ${props => props.theme.ms(-1)};
       svg {
         margin-left: 0.5em;
@@ -49,6 +50,8 @@ const Container = styled('header')`
 `
 
 const SiteHeader = () => {
+  const [expanded, setExpanded] = useState(false)
+
   return (
     <Container>
       <Link href="/">
@@ -60,17 +63,26 @@ const SiteHeader = () => {
       <div className="intro-container">
         <p>
           This site reports on an internet survey of the government bodies responsible for civilian oversight of municipal law enforcement entities in the top 100 U.S. jurisdictions based on population. The survey is an attempt to identify the entities and document the forms of civilian oversight in each city.
+          {!expanded && (
+            <button type="button" className="looks-like-link" onClick={() => setExpanded(true)}>
+              More...
+            </button>
+          )}
         </p>
 
-        <div>
-          <p>
-              In addition to documenting the existence and functions of the entities in each city, the survey, which is based on internet available information, was also conducted to assess the prevalence of the various forms of civilian oversight across the largest U.S. cities.  Data-gathering was conducted from January through August 2019. Based on online information, the survey identifies each civilian oversight agency as providing one or more of the following seven civilian oversight functions: <strong>Investigative, Audit, Review, Adjudicative, Advisory, Supervisory,</strong> and <strong>Appeals</strong>. The information on each agency has been compiled to shed light on the prevalence of the various forms of civilian oversight of policing that the largest U.S. cities employ.
-          </p>
-          <p>
-              The results show that a majority of the top 100 U.S. jurisdictions employ at least one form of civilian oversight of police, and that many jurisdictions have developed more complex, multi-functional systems as dozens of municipalities either started up or enhanced the powers of existing civilian oversight systems in the preceding five years.
-          </p>
+        <CSSTransition
+          mountOnEnter
+          in={expanded}
+          timeout={300}
+          classNames={C.SMOOTH_SLIDE_DOWN}
+          unmountOnExit
+        >
+          <div>
+            <p>In addition to documenting the existence and functions of the entities in each city, the survey, which is based on internet available information, was also conducted to assess the prevalence of the various forms of civilian oversight across the largest U.S. cities.  Data-gathering was conducted from January through August 2019. Based on online information, the survey identifies each civilian oversight agency as providing one or more of the following seven civilian oversight functions: <strong>Investigative, Audit, Review, Adjudicative, Advisory, Supervisory,</strong> and <strong>Appeals</strong>. The information on each agency has been compiled to shed light on the prevalence of the various forms of civilian oversight of policing that the largest U.S. cities employ.</p>
+            <p>The results show that a majority of the top 100 U.S. jurisdictions employ at least one form of civilian oversight of police, and that many jurisdictions have developed more complex, multi-functional systems as dozens of municipalities either started up or enhanced the powers of existing civilian oversight systems in the preceding five years.</p>
+          </div>
+        </CSSTransition>
 
-        </div>
         <div className="article-link">
           <a href="#">
             Read the full report here
