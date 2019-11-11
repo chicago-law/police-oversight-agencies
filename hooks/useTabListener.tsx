@@ -12,6 +12,9 @@ const useTabListener = () => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleFirstTab)
+    return () => {
+      window.removeEventListener('keydown', handleFirstTab)
+    }
   }, [])
 }
 
