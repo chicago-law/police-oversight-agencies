@@ -16,21 +16,17 @@ const Container = styled('nav')`
     display: block;
     text-transform: uppercase;
     font-family: ${props => props.theme.proximaNova};
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     font-size: ${props => props.theme.ms(1)};
     text-align: center;
     opacity: 0.5;
     letter-spacing: 3px;
   }
   ul {
-    display: flex;
-    justify-content: space-between;
-    @media (max-width: ${props => props.theme.bP.mR}) {
-      justify-content: space-around;
-    }
-    @media (max-width: ${props => props.theme.bP.mS}) {
-      flex-direction: column;
-    }
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    max-width: 62em;
+    margin: auto;
   }
   li {
     position: relative;
@@ -46,9 +42,12 @@ const Container = styled('nav')`
       display: block;
       height: 100%;
       padding: 1em 1.5em 2em 1.5em;
-      background: rgba(255, 255, 255, 0.05);
       border: 3px solid transparent;
       color: white;
+      background: rgba(255, 255, 255, 0.02);
+      &:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
     }
     a.active {
       background: ${props => props.theme.darkRed};

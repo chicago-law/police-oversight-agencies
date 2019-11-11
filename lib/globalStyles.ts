@@ -67,7 +67,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${props => props.theme.red};
     text-decoration: none;
     font-weight: bold;
-    transition: opacity 150ms ease-out;
+    transition: opacity 150ms ease-out, background 150ms ease-out;
   }
   a:hover, .looks-like-link:hover {
     opacity: 0.75;

@@ -9,7 +9,7 @@ export const theme = {
   // Accent colors
   red: 'rgb(255, 103, 95)',
   darkRed: 'rgb(66, 45, 45)',
-  lightBlue: '#DBE4FF',
+  lightBlue: 'rgb(177, 208, 255)',
   darkBlue: '#3A55A0',
   blue: (opacity = 1) => `rgba(95, 136, 254, ${opacity})`,
 

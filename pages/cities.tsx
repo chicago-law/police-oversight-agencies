@@ -31,6 +31,7 @@ const Container = styled('div')`
   .right {
     flex: 0 0 30em;
     padding-left: 1em;
+    padding-top: 0.6em; /* Even out the left side heading line */
     @media (max-width: ${props => props.theme.bP.dMd}) {
       flex: 0 0 25em;
     }
@@ -44,6 +45,20 @@ const Container = styled('div')`
   ul {
     margin: 0;
     padding: 0;
+  }
+  .column-header {
+    margin-bottom: 1em;
+    font-size: ${props => props.theme.ms(-2)};
+    font-family: ${props => props.theme.proximaNova};
+    font-weight: bold;
+    color: ${props => props.theme.middleGray};
+    span:first-child {
+    display: inline-block;
+
+      width: 5rem;
+      text-align: right;
+      padding-right: 1rem;
+    }
   }
   .no-results {
     margin-left: 4.7em;
@@ -65,9 +80,7 @@ const Cities: NextPage = () => {
   }, [selectedState, query])
 
   const filteredCityList = Object.values(cities).filter(city => {
-    if (selectedState) {
-      return city.state.toUpperCase() === selectedState.toUpperCase()
-    }
+    if (selectedState) return city.state.toUpperCase() === selectedState.toUpperCase()
     if (query) {
       const searchable = `${city.name} ${city.state} ${city.name}, ${city.state} ${city.name}, ${stateAbbr(city.state)}`
       return searchable.toUpperCase().includes(query.toUpperCase())
@@ -101,11 +114,17 @@ const Cities: NextPage = () => {
           <Loading />
         )}
         {filteredCityList.length > 0 && (
-          <ul>
-            {filteredCityList.slice(0, cityLimit).map(city => (
-              <CityListItem key={city.longitude} cityId={city.id} />
-            ))}
-          </ul>
+          <>
+            <div className="column-header">
+              <span>Population</span>
+              <span>City</span>
+            </div>
+            <ul>
+              {filteredCityList.slice(0, cityLimit).map(city => (
+                <CityListItem key={city.longitude} cityId={city.id} />
+              ))}
+            </ul>
+          </>
         )}
         {query.length > 0 && filteredCityList.length === 0 && (
           <p className="no-results">No cities or states in this study match "{query}".</p>

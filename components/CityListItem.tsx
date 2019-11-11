@@ -18,8 +18,8 @@ const Container = styled('li')`
   }
   .population {
     top: 12px;
-    flex: 0 0 5.9em; /* Fixed width so we can position the search icon in line with it */
-    padding-right: 1.25em;
+    flex: 0 0 5rem; /* Fixed width so we can position the search icon in line with it */
+    padding-right: 1rem;
     text-align: right;
     @media (max-width: ${props => props.theme.bP.mS}) {
       display: none;
@@ -55,6 +55,7 @@ const Container = styled('li')`
     padding-right: 0.25em;
     font-family: ${props => props.theme.proximaNova};
     font-weight: bold;
+    color: ${props => props.theme.lightBlue};
   }
   .text-button {
     margin-top: 0.5em;
@@ -99,9 +100,7 @@ const CityListItem = ({ cityId }: OwnProps) => {
 
   const noAgencies = useMemo(() => !Object.values(agenciesByRole).some(agencyNames => agencyNames), [agencies])
 
-  if (!city) {
-    return <div />
-  }
+  if (!city) return <div />
 
   return (
     <Container>

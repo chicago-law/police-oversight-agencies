@@ -5,9 +5,9 @@ const Container = styled('div')`
   display: flex;
   margin-bottom: 2em;
   .icon-container {
-    flex: 0 0 4.7em;
+    flex: 0 0 5rem; /* Line up the input w/ City name column */
     text-align: right;
-    padding-right: 0.9em;
+    padding-right: 1rem;
     @media (max-width: ${props => props.theme.bP.mS}) {
       flex: 0 0 auto;
     }
