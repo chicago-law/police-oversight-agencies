@@ -131,9 +131,6 @@ const CityListItem = ({ cityId }: OwnProps) => {
                   <div key={agency.id} className="agency-detail">
                     <h4>{agency.name}</h4>
                     <p><span className="field-label">Est: </span>{agency.year_established !== null ? agency.year_established : '(unknown)' }</p>
-                    {agency.year_amended && (
-                      <p><span className="field-label">Amended: </span>{agency.year_amended}</p>
-                    )}
                     <p><span className="field-label">Primary Role: </span>{agency.primary_role}</p>
                     <p><span className="field-label">Description: </span>{agency.description}</p>
                   </div>
