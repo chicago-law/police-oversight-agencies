@@ -73,7 +73,13 @@ const SiteFooter = () => (
         <a href="" className="link-with-icon"><FontAwesomeIcon icon={['fas', 'envelope']} /> Contact</a>
       </li>
       <li>
-        <a href="" className="link-with-icon"><FontAwesomeIcon icon={['fab', 'github']} /> View source code on Github</a>
+        <a
+          href="https://github.com/chicago-law/police-oversight-agencies"
+          className="link-with-icon"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon icon={['fab', 'github']} /> View source code on Github
+        </a>
       </li>
       <li>
         <p>
