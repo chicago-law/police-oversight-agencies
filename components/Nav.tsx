@@ -7,11 +7,6 @@ import ActiveLink from './ActiveLink'
 
 const Container = styled('nav')`
   margin: 0 0 7em 0;
-  @media (max-width: ${props => props.theme.bP.mR}) {
-    flex-direction: column;
-    align-items: stretch;
-    margin: 4em 0;
-  }
   .explore {
     display: block;
     text-transform: uppercase;
@@ -27,16 +22,16 @@ const Container = styled('nav')`
     grid-template-columns: 33.3% 33.3% 33.3%;
     max-width: 62em;
     margin: auto;
+    @media (max-width: ${props => props.theme.bP.dSm}) {
+      display: block;
+    }
   }
   li {
     position: relative;
     list-style-type: none;
     margin: 0 1em;
-    @media (max-width: ${props => props.theme.bP.mR}) {
-      margin: 0;
-    }
-    @media (max-width: ${props => props.theme.bP.mS}) {
-      margin: 0 0 1em 0;
+    @media (max-width: ${props => props.theme.bP.dSm}) {
+      margin: 1em 0;
     }
     a {
       display: block;
@@ -48,6 +43,9 @@ const Container = styled('nav')`
       &:hover {
         background: rgba(255, 255, 255, 0.05);
       }
+      @media (max-width: ${props => props.theme.bP.mR}) {
+        padding: 0.5em 0.75em;
+      }
     }
     a.active {
       background: ${props => props.theme.darkRed};
@@ -58,6 +56,9 @@ const Container = styled('nav')`
       h2 {
         display: inline-block;
         font-size: ${props => props.theme.ms(3)};
+        @media (max-width: ${props => props.theme.bP.mR}) {
+          font-size: ${props => props.theme.ms(2)};
+        }
       }
       svg {
         margin-right: 0.75em;

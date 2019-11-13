@@ -18,8 +18,11 @@ import animations from '../lib/animations'
 const Container = styled('div')`
   position: relative;
   ${animations.fadeSlideUp(1200)};
+  .scrolling-container {
+    overflow-x: auto;
+  }
   .table {
-    min-width: 62em;
+    min-width: 60em;
     min-height: 15em;
     .columned-row {
       display: grid;
@@ -85,17 +88,19 @@ const Agencies: NextPage = () => {
         reqRoles={reqRoles}
         setReqRoles={setReqRoles}
       />
-      <div className="table">
-        <AgencyHeaderRow sort={sort} setSort={setSort} />
-        {!dataReady && (
-          <Loading />
-        )}
-        {filteredAgencies.map(agency => (
-          <AgencyTableRow key={agency.id} agencyId={agency.id} />
-        ))}
-        {filteredAgencies.length === 0 && dataReady && (
-          <p className="no-results">No agencies found with the current filter criteria.</p>
-        )}
+      <div className="scrolling-container">
+        <div className="table">
+          <AgencyHeaderRow sort={sort} setSort={setSort} />
+          {!dataReady && (
+            <Loading />
+          )}
+          {filteredAgencies.map(agency => (
+            <AgencyTableRow key={agency.id} agencyId={agency.id} />
+          ))}
+          {filteredAgencies.length === 0 && dataReady && (
+            <p className="no-results">No agencies found with the current filter criteria.</p>
+          )}
+        </div>
       </div>
     </Container>
   )

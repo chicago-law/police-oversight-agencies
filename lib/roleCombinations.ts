@@ -46,7 +46,7 @@ export function countRoleCombosInCities(
   return cityTally
 }
 
-// Returns true if two combinations are already in the combo library,
+// Pass in two roles and look for them as a Combo in the library,
 // as either [A, B] or [B, A].
 export function comboLookup(roleA: roleColumns, roleB: roleColumns, comboLibrary: Combo[]) {
   return comboLibrary.find(combo => (combo.roles.length === 2

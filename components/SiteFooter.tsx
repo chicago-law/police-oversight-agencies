@@ -77,6 +77,7 @@ const SiteFooter = () => (
           href="https://github.com/chicago-law/police-oversight-agencies"
           className="link-with-icon"
           rel="noopener noreferrer"
+          target="_blank"
         >
           <FontAwesomeIcon icon={['fab', 'github']} /> View source code on Github
         </a>

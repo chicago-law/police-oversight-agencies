@@ -122,12 +122,12 @@ const GlobalStyles = createGlobalStyle`
     transition: max-height 300ms ease-in-out, opacity 300ms ease-in-out;
   }
   .${C.SMOOTH_SLIDE_DOWN}-enter-active, .${C.SMOOTH_SLIDE_DOWN}-enter-done {
-    max-height: 50em;
+    max-height: 100em;
     opacity: 1;
     transition: max-height 300ms ease-in-out, opacity 300ms ease-in-out;
   }
   .${C.SMOOTH_SLIDE_DOWN}-exit {
-    max-height: 50em;
+    max-height: 100em;
     opacity: 1;
     transition: max-height 300ms ease-in-out, opacity 300ms ease-in-out;
   }

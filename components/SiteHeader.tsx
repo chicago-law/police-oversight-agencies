@@ -8,6 +8,13 @@ import C from '../lib/constants'
 const Container = styled('header')`
   margin: 4em auto 0 auto;
   padding: 0 1em;
+  @media (max-width: ${props => props.theme.bP.mR}) {
+    margin-top: 2em;
+  }
+  @media (max-width: ${props => props.theme.bP.mS}) {
+    margin-top: 1em;
+    padding: 0;
+  }
   h1 {
     font-size: ${props => props.theme.ms(5)};
     text-align: center;
@@ -25,8 +32,14 @@ const Container = styled('header')`
   }
   .intro-container {
     margin: 0 auto 4em auto;
-    padding: 0 2em 0 2em;
+    padding: 0 2em;
     max-width: 45em;
+    @media (max-width: ${props => props.theme.bP.mR}) {
+      padding: 0 1em;
+    }
+    @media (max-width: ${props => props.theme.bP.mS}) {
+      padding: 0;
+    }
     p {
       margin-bottom: 1em;
       button {
