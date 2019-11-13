@@ -2,10 +2,6 @@ import {
   faGithub,
 } from '@fortawesome/free-brands-svg-icons'
 import {
-  faAngleDown,
-  faAngleUp,
-} from '@fortawesome/pro-regular-svg-icons'
-import {
   faArrowDown,
   faCaretUp,
   faCaretDown,
@@ -22,8 +18,6 @@ import {
 } from '@fortawesome/pro-duotone-svg-icons'
 
 const faIcons = [
-  faAngleDown,
-  faAngleUp,
   faArrowDown,
   faCaretUp,
   faCaretDown,

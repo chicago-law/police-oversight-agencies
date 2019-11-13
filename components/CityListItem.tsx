@@ -142,13 +142,13 @@ const CityListItem = ({ cityId }: OwnProps) => {
                 <TextButton
                   text="Details"
                   onClick={() => setExpanded(true)}
-                  iconAfter={['far', 'angle-down']}
+                  iconAfter={['fas', 'caret-down']}
                 />
               ) : (
                 <TextButton
                   text="Hide"
                   onClick={() => setExpanded(false)}
-                  iconAfter={['far', 'angle-up']}
+                  iconAfter={['fas', 'caret-up']}
                 />
               )}
           </>
