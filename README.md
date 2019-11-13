@@ -1,5 +1,4 @@
 # Police Oversight Agencies
-## Tool for viewing police oversight agencies in the 100 largest US cities
 ### Built with [React](https://github.com/facebook/react), [Next.js](https://github.com/zeit/next.js), [TypeScript](https://github.com/microsoft/TypeScript), and [D3](https://github.com/d3/d3).
 
 This site reports on an internet survey of the government bodies responsible for civilian oversight of municipal law enforcement entities in the top 100 U.S. jurisdictions based on population. The survey is an attempt to identify the entities and document the forms of civilian oversight in each city.
