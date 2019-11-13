@@ -9,9 +9,9 @@ dotenv.config()
 module.exports = withBundleAnalyzer(withCSS({
   // This is awesome but still experimental according to Next.
   // Revisit in the future!
-  // experimental: {
-  //   granularChunks: true,
-  // },
+  experimental: {
+    granularChunks: true,
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

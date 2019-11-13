@@ -37,7 +37,7 @@ const Container = styled('footer')`
       p {
         max-width: 30em;
       }
-      .logo {
+      .logo img {
         position: relative;
         top: 6px;
         max-width: 300px;
@@ -60,8 +60,8 @@ const SiteFooter = () => (
   <Container>
     <ul>
       <li>
-        <a href="https://www.law.uchicago.edu" target="_blank" rel="noopener noreferrer">
-          <LawSchoolLogo className="logo" />
+        <a href="https://www.law.uchicago.edu" target="_blank" rel="noopener noreferrer" className="logo">
+          <LawSchoolLogo />
         </a>
       </li>
       <li>
