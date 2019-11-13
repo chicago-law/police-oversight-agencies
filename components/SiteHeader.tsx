@@ -2,8 +2,6 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
-import { CSSTransition } from 'react-transition-group'
-import C from '../lib/constants'
 
 const Container = styled('header')`
   margin: 4em auto 0 auto;
@@ -56,14 +54,15 @@ const Container = styled('header')`
   }
   .more-description {
     max-height: 0;
-    opacity: 0.01;
-    transition: max-height 200ms ease-in-out, opacity 200ms ease-in-out;
+    opacity: 0;
+    transition: max-height 300ms ease-in-out, opacity 300ms ease-in-out;
     &.expanded {
       max-height: 100em;
       opacity: 1;
     }
   }
   .article-link {
+    position: relative; /* makes it sit above the hidden desc text */
     margin-top: 1em;
     svg {
       margin-left: 0.5em;

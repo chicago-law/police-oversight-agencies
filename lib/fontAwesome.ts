@@ -12,12 +12,16 @@ import {
   faSearch,
 } from '@fortawesome/pro-solid-svg-icons'
 import {
+  faAngleDown,
+} from '@fortawesome/pro-regular-svg-icons'
+import {
   faGavel,
   faListOl,
   faMapMarkedAlt,
 } from '@fortawesome/pro-duotone-svg-icons'
 
 const faIcons = [
+  faAngleDown,
   faArrowDown,
   faCaretUp,
   faCaretDown,

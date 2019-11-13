@@ -59,7 +59,10 @@ const Container = styled('li')`
   }
   .text-button {
     margin-top: 0.5em;
-    .fa-angle-down, .fa-angle-up {
+    .svg-inline--fa {
+      position: relative;
+      top: -1px;
+      left: -2px;
       font-size: ${props => props.theme.ms(-1)};
     }
   }
