@@ -70,7 +70,7 @@ const SiteFooter = () => (
         </p>
       </li>
       <li>
-        <a href="" className="link-with-icon"><FontAwesomeIcon icon={['fas', 'envelope']} /> Contact</a>
+        <a href="mailto:policeoversight@uchicago.edu" className="link-with-icon"><FontAwesomeIcon icon={['fas', 'envelope']} /> Contact</a>
       </li>
       <li>
         <a
