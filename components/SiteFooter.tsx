@@ -66,7 +66,7 @@ const SiteFooter = () => (
       </li>
       <li>
         <p>
-          The author of the survey has attempted to validate the data provided on this site to the extent possible using online information resources, but makes no representations about the accuracy of the information provided herein. In particular, the author notes that the field of civilian oversight of police is changing rapidly and this survey is only a snapshot of the field taken at the time of data-gathering. We hope to periodically provide updated information.
+          The author of the survey has attempted to validate the data provided on this site to the extent possible using online information resources, but makes no representations about the accuracy of the information provided herein. In particular, the author notes that the field of civilian oversight of police is changing rapidly and this survey is only a snapshot of the field taken at the time of data-gathering (January - August 2019). We hope to periodically provide updated information.
         </p>
       </li>
       <li>
