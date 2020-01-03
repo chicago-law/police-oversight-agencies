@@ -98,8 +98,12 @@ const SiteHeader = () => {
 
         {/* Add in the link when it's ready */}
         {/* <div className="article-link">
-          <a href="#">
-            Read the full report here
+          <a
+            href="#"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Read the full publication here
             <FontAwesomeIcon icon={['fas', 'external-link-square-alt']} />
           </a>
         </div> */}

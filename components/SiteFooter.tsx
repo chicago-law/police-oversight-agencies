@@ -30,6 +30,9 @@ const Container = styled('footer')`
       @media (max-width: ${props => props.theme.bP.mR}) {
         margin-bottom: 2em;
       }
+      &:last-child {
+        margin-right: 0;
+      }
       p, a {
         color: ${props => props.theme.lightGray};
         font-weight: normal;
