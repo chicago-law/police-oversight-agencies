@@ -37,11 +37,14 @@ const Container = styled('footer')`
       p {
         max-width: 30em;
       }
-      .logo svg {
-        position: relative;
-        top: 6px;
+      .logo {
         max-width: 300px;
-        opacity: 0.8;
+        svg {
+          position: relative;
+          top: 6px;
+          width: 100%;
+          opacity: 0.8;
+        }
       }
       .link-with-icon {
         display: inline-flex;
@@ -60,7 +63,12 @@ const SiteFooter = () => (
   <Container>
     <ul>
       <li>
-        <a href="https://www.law.uchicago.edu" target="_blank" rel="noopener noreferrer" className="logo">
+        <a
+          href="https://www.law.uchicago.edu"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="logo"
+        >
           <LawSchoolLogo />
         </a>
       </li>
@@ -70,7 +78,13 @@ const SiteFooter = () => (
         </p>
       </li>
       <li>
-        <a href="mailto:policeoversight@uchicago.edu" className="link-with-icon"><FontAwesomeIcon icon={['fas', 'envelope']} /> Contact</a>
+        <a
+          href="mailto:policeoversight@uchicago.edu"
+          className="link-with-icon"
+        >
+          <FontAwesomeIcon icon={['fas', 'envelope']} />
+          Contact
+        </a>
       </li>
       <li>
         <a
@@ -79,13 +93,12 @@ const SiteFooter = () => (
           rel="noopener noreferrer"
           target="_blank"
         >
-          <FontAwesomeIcon icon={['fab', 'github']} /> View source code on Github
+          <FontAwesomeIcon icon={['fab', 'github']} />
+          View source code on Github
         </a>
       </li>
       <li>
-        <p>
-          &copy; 2019 Sharon R. Fairley
-        </p>
+        <p>&copy; {new Date().getFullYear()} Sharon R. Fairley</p>
       </li>
     </ul>
   </Container>
