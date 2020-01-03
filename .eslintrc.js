@@ -36,6 +36,17 @@ module.exports = {
     'arrow-body-style': 0,
     'arrow-parens': 0,
     'import/prefer-default-export': 0,
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+        mjs: 'never',
+      },
+    ],
     'jsx-a11y/anchor-is-valid': 0,
     'jsx-a11y/label-has-for': 0,
     'max-len': 0,
@@ -44,7 +55,7 @@ module.exports = {
     'no-underscore-dangle': 0,
     'object-curly-newline': 0,
     'radix': 0,
-    'react-hooks/rules-of-hooks': "error",
+    'react-hooks/rules-of-hooks': 'error',
     'react/jsx-closing-tag-location': 'off',
     'react/jsx-filename-extension': 'off',
     'react/jsx-one-expression-per-line': 'off',
@@ -52,13 +63,18 @@ module.exports = {
     'react/no-unescaped-entities': 0,
     'react/react-in-jsx-scope': 0,
     'react/prop-types': 0,
-    'semi': [1, "never"]
+    'semi': [1, 'never']
   },
   'settings': {
     'import/resolver': {
       'node': {
-        'extensions': ['.js', '.jsx', '.ts', '.tsx']
+        'extensions': [
+          '.js',
+          '.jsx',
+          '.ts',
+          '.tsx'
+        ]
       }
     }
-  },
+  }
 };

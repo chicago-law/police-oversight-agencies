@@ -1,3 +1,5 @@
+import { AnyAction } from 'redux'
+
 export type ScrolledFromTopState = number;
 
 export const REPORT_SCROLL_POS = 'REPORT_SCROLL_POS'
@@ -6,4 +8,4 @@ export interface ReportScrollPos {
   pos: number;
 }
 
-export type ScrolledFromTopActionTypes = ReportScrollPos
+export type ScrolledFromTopActionTypes = ReportScrollPos | AnyAction
