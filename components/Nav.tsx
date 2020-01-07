@@ -18,12 +18,27 @@ const Container = styled('nav')`
     letter-spacing: 3px;
   }
   ul {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 33.3% 33.3% 33.3%;
     grid-template-columns: 33.3% 33.3% 33.3%;
     max-width: 62em;
     margin: auto;
     @media (max-width: ${props => props.theme.bP.dSm}) {
       display: block;
+    }
+    /* IE11, how I loathe thee */
+    >li:nth-child(1) {
+      -ms-grid-column: 1;
+      grid-column: 1;
+    }
+    >li:nth-child(2) {
+      -ms-grid-column: 2;
+      grid-column: 2;
+    }
+    >li:nth-child(3) {
+      -ms-grid-column: 3;
+      grid-column: 3;
     }
   }
   li {

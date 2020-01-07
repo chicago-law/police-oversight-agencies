@@ -25,10 +25,45 @@ const Container = styled('div')`
     min-width: 60em;
     min-height: 15em;
     .columned-row {
+      display: -ms-grid;
       display: grid;
+      -ms-grid-columns: 1fr 8em 4em 6em 8em 5em 3em 12em;
       grid-template-columns: 1fr 8em 4em 6em 8em 5em 3em 12em;
       >div {
         padding: 0.5em;
+      }
+      /* IE11, how I loathe thee */
+      >div:nth-child(1) {
+        -ms-grid-column: 1;
+        grid-column: 1;
+      }
+      >div:nth-child(2) {
+        -ms-grid-column: 2;
+        grid-column: 2;
+      }
+      >div:nth-child(3) {
+        -ms-grid-column: 3;
+        grid-column: 3;
+      }
+      >div:nth-child(4) {
+        -ms-grid-column: 4;
+        grid-column: 4;
+      }
+      >div:nth-child(5) {
+        -ms-grid-column: 5;
+        grid-column: 5;
+      }
+      >div:nth-child(6) {
+        -ms-grid-column: 6;
+        grid-column: 6;
+      }
+      >div:nth-child(7) {
+        -ms-grid-column: 7;
+        grid-column: 7;
+      }
+      >div:nth-child(8) {
+        -ms-grid-column: 8;
+        grid-column: 8;
       }
       &.header {
         border-bottom: 1px solid ${props => props.theme.darkGray};
