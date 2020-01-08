@@ -96,17 +96,16 @@ const SiteHeader = () => {
           <p>The results show that a majority of the top 100 U.S. jurisdictions employ at least one form of civilian oversight of police, and that many jurisdictions have developed more complex, multi-functional systems as dozens of municipalities either started up or enhanced the powers of existing civilian oversight systems in the preceding five years.</p>
         </div>
 
-        {/* Add in the link when it's ready */}
-        {/* <div className="article-link">
+        <div className="article-link">
           <a
-            href="#"
+            href="http://cardozolawreview.com/survey-says-u-s-cities-double-down-on-civilian-oversight-of-police-despite-challenges-and-controversy/"
             rel="noopener noreferrer"
             target="_blank"
           >
             Read the full publication here
             <FontAwesomeIcon icon={['fas', 'external-link-square-alt']} />
           </a>
-        </div> */}
+        </div>
       </div>
     </Container>
   )
