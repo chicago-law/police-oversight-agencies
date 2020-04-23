@@ -51,6 +51,7 @@
     "use-debounce": "^3.3.0"
   },
   "devDependencies": {
+    "@babel/runtime-corejs2": "^7.9.2",
     "@types/d3": "^5.7.2",
     "@types/geojson": "^7946.0.7",
     "@types/mssql": "^4.3.1",
