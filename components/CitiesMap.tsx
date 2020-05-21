@@ -133,7 +133,7 @@ const CitiesMap = ({
     const svg = d3.select(svgRef.current)
 
     d3.json('/static/us-states-albers.json').then((states) => {
-      const ff: FeatureWithFeatures = topojson.feature(states, states.objects.states)
+      const ff: FeatureWithFeatures = topojson.feature(states as any, (states as any).objects.states)
       const statesData = ff.features as Feature[]
 
       // Start by clearing out what was here before.
