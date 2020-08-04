@@ -1,5 +1,5 @@
 # Police Oversight Agencies
-### Built with [React](https://github.com/facebook/react), [Next.js](https://github.com/zeit/next.js), [TypeScript](https://github.com/microsoft/TypeScript), and [D3](https://github.com/d3/d3).
+## Built with [React](https://github.com/facebook/react), [Next.js](https://github.com/zeit/next.js), [TypeScript](https://github.com/microsoft/TypeScript), and [D3](https://github.com/d3/d3).
 
 This site reports on an internet survey of the government bodies responsible for civilian oversight of municipal law enforcement entities in the top 100 U.S. jurisdictions based on population. The survey is an attempt to identify the entities and document the forms of civilian oversight in each city.
 
@@ -7,6 +7,9 @@ In addition to documenting the existence and functions of the entities in each c
 
 The results show that a majority of the top 100 U.S. jurisdictions employ at least one form of civilian oversight of police, and that many jurisdictions have developed more complex, multi-functional systems as dozens of municipalities either started up or enhanced the powers of existing civilian oversight systems in the preceding five years.
 
+The author of the survey has attempted to validate the data provided on this site to the extent possible using online information resources, but makes no representations about the accuracy of the information provided herein. In particular, the author notes that the field of civilian oversight of police is changing rapidly and this survey is only a snapshot of the field taken at the time of data-gathering (January - August 2019). We hope to periodically provide updated information.
+
 ---
 
-The author of the survey has attempted to validate the data provided on this site to the extent possible using online information resources, but makes no representations about the accuracy of the information provided herein. In particular, the author notes that the field of civilian oversight of police is changing rapidly and this survey is only a snapshot of the field taken at the time of data-gathering. We hope to periodically provide updated information.
+## Data Updates:
+6/23/2020: Updates to Austin, TX
