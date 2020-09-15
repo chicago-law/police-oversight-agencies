@@ -12,4 +12,5 @@ The author of the survey has attempted to validate the data provided on this sit
 ---
 
 ## Data Updates:
+9/15/2020: Updates to Miami, FL
 6/23/2020: Updates to Austin, TX
