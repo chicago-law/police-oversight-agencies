@@ -3,13 +3,10 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  extends: [
-    'airbnb',
-    'plugin:@typescript-eslint/recommended'
-  ],
+  extends: ['airbnb', 'plugin:@typescript-eslint/recommended', 'prettier'],
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
+    SharedArrayBuffer: 'readonly',
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -19,15 +16,10 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-    'react-hooks',
-    '@typescript-eslint'
-  ],
+  plugins: ['react', 'react-hooks', '@typescript-eslint'],
   rules: {
     '@typescript-eslint/ban-ts-ignore': 1,
     '@typescript-eslint/camelcase': 0,
-    '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/explicit-member-accessibility': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/no-explicit-any': 0,
@@ -54,7 +46,7 @@ module.exports = {
     'no-shadow': 0,
     'no-underscore-dangle': 0,
     'object-curly-newline': 0,
-    'radix': 0,
+    radix: 0,
     'react-hooks/rules-of-hooks': 'error',
     'react/jsx-closing-tag-location': 'off',
     'react/jsx-filename-extension': 'off',
@@ -63,18 +55,13 @@ module.exports = {
     'react/no-unescaped-entities': 0,
     'react/react-in-jsx-scope': 0,
     'react/prop-types': 0,
-    'semi': [1, 'never']
+    semi: [1, 'never'],
   },
-  'settings': {
+  settings: {
     'import/resolver': {
-      'node': {
-        'extensions': [
-          '.js',
-          '.jsx',
-          '.ts',
-          '.tsx'
-        ]
-      }
-    }
-  }
-};
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
+}
