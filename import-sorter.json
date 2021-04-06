@@ -1,0 +1,11 @@
+{
+  "emptyLinesBetweenGroups": 0,
+  "groupRules": ["^react.*", "^[@]", {}, "^[.]"],
+  "trailingComma": "multiLine",
+  "wrappingStyle": {
+    "maxBindingNamesPerLine": 5,
+    "maxDefaultAndBindingNamesPerLine": 5,
+    "maxExportNamesPerLine": 0,
+    "maxNamesPerWrappedLine": 1
+  }
+}
