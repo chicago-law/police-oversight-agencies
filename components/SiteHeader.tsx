@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import Link from 'next/link'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
+import Link from 'next/link'
+import styled from 'styled-components'
 
 const Container = styled('header')`
   margin: 4em auto 0 auto;
@@ -69,6 +69,13 @@ const Container = styled('header')`
     }
   }
 `
+const StaleDataNotice = styled('div')`
+  margin: 4rem 2rem;
+  background: white;
+  color: black;
+  padding: 1rem;
+  border-radius: 15px;
+`
 
 const SiteHeader = () => {
   const [expanded, setExpanded] = useState(false)
@@ -83,17 +90,49 @@ const SiteHeader = () => {
       <h5>By Sharon R. Fairley</h5>
       <div className="intro-container">
         <p>
-          This site reports on an internet survey conducted January through August 2019 of the government bodies responsible for civilian oversight of municipal law enforcement entities in the top 100 U.S. jurisdictions based on population. The survey is an attempt to identify the entities and document the forms of civilian oversight in each city.
+          This site reports on an internet survey conducted January through
+          August 2019 of the government bodies responsible for civilian
+          oversight of municipal law enforcement entities in the top 100 U.S.
+          jurisdictions based on population. The survey is an attempt to
+          identify the entities and document the forms of civilian oversight in
+          each city.
           {!expanded && (
-            <button type="button" className="looks-like-link" onClick={() => setExpanded(true)}>
+            <button
+              type="button"
+              className="looks-like-link"
+              onClick={() => setExpanded(true)}
+            >
               More...
             </button>
           )}
         </p>
 
         <div className={`more-description ${expanded ? 'expanded' : ''}`}>
-          <p>In addition to documenting the existence and functions of the entities in each city, the survey, which is based on information available on the internet at the time of data gathering, was also conducted to assess the prevalence of the various forms of civilian oversight across the largest U.S. cities. Based on online information, the survey identifies each civilian oversight agency as providing one or more of the following seven civilian oversight functions: <strong>Investigative, Audit, Review, Adjudicative, Advisory, Supervisory,</strong> and <strong>Appeals</strong>. The information on each agency has been compiled to shed light on the prevalence of the various forms of civilian oversight of policing that the largest U.S. cities employ.</p>
-          <p>The results show that a majority of the top 100 U.S. jurisdictions employ at least one form of civilian oversight of police, and that many jurisdictions have developed more complex, multi-functional systems as dozens of municipalities either started up or enhanced the powers of existing civilian oversight systems in the preceding five years.</p>
+          <p>
+            In addition to documenting the existence and functions of the
+            entities in each city, the survey, which is based on information
+            available on the internet at the time of data gathering, was also
+            conducted to assess the prevalence of the various forms of civilian
+            oversight across the largest U.S. cities. Based on online
+            information, the survey identifies each civilian oversight agency as
+            providing one or more of the following seven civilian oversight
+            functions:{' '}
+            <strong>
+              Investigative, Audit, Review, Adjudicative, Advisory, Supervisory,
+            </strong>{' '}
+            and <strong>Appeals</strong>. The information on each agency has
+            been compiled to shed light on the prevalence of the various forms
+            of civilian oversight of policing that the largest U.S. cities
+            employ.
+          </p>
+          <p>
+            The results show that a majority of the top 100 U.S. jurisdictions
+            employ at least one form of civilian oversight of police, and that
+            many jurisdictions have developed more complex, multi-functional
+            systems as dozens of municipalities either started up or enhanced
+            the powers of existing civilian oversight systems in the preceding
+            five years.
+          </p>
         </div>
 
         <div className="article-link">
@@ -106,6 +145,14 @@ const SiteHeader = () => {
             <FontAwesomeIcon icon={['fas', 'external-link-square-alt']} />
           </a>
         </div>
+
+        <StaleDataNotice>
+          <p>
+            <strong>Note: </strong>This dataset has become out of date since
+            publication but is currently in the process of being updated. Please
+            check back in June 2021. Thank you.
+          </p>
+        </StaleDataNotice>
       </div>
     </Container>
   )
