@@ -148,9 +148,10 @@ const SiteHeader = () => {
 
         <StaleDataNotice>
           <p>
-            <strong>Note: </strong>This dataset has become out of date since
-            publication but is currently in the process of being updated. Please
-            check back in June 2021. Thank you.
+            <strong>Note: </strong> Thanks for checking out our website. This
+            site is based on data collected in 2019. For more current
+            information on civilian oversight, go to
+            <a href="https://www.nacole.org/">NACOLE.org</a>
           </p>
         </StaleDataNotice>
       </div>
