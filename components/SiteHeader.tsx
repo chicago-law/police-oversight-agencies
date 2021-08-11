@@ -151,7 +151,14 @@ const SiteHeader = () => {
             <strong>Note: </strong> Thanks for checking out our website. This
             site is based on data collected in 2019. For more current
             information on civilian oversight, go to
-            <a href="https://www.nacole.org/">NACOLE.org</a>
+            <a
+              href="https://www.nacole.org/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {' '}
+              NACOLE.org
+            </a>
           </p>
         </StaleDataNotice>
       </div>
