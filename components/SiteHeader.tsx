@@ -73,7 +73,7 @@ const StaleDataNotice = styled('div')`
   margin: 4rem 2rem;
   background: white;
   color: black;
-  padding: 3rem;
+  padding: 1rem;
   border-radius: 15px;
 `
 
