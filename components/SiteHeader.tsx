@@ -70,10 +70,10 @@ const Container = styled('header')`
   }
 `
 const StaleDataNotice = styled('div')`
-  margin: 5rem 2rem;
+  margin: 4rem 2rem;
   background: white;
   color: black;
-  padding: 1rem;
+  padding: 3rem;
   border-radius: 15px;
 `
 
