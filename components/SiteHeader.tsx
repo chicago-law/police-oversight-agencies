@@ -54,6 +54,7 @@ const Container = styled('header')`
   }
   .more-description {
     max-height: 0;
+    overflow: hidden;
     opacity: 0;
     transition: max-height 300ms ease-in-out, opacity 300ms ease-in-out;
     &.expanded {
