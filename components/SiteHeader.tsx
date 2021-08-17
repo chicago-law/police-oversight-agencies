@@ -53,7 +53,7 @@ const Container = styled('header')`
     }
   }
   .more-description {
-    style="overflow: hidden;"
+    overflow: hidden;
     max-height: 0;
     opacity: 0;
     transition: max-height 300ms ease-in-out, opacity 300ms ease-in-out;
