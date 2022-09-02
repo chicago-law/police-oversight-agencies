@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { AgencySortDimensions } from '../lib/compareAgencies'
 
 interface StyleProps {
-  active: boolean;
-  direction: 'asc' | 'desc';
-  sortable: boolean;
+  active: boolean
+  direction: 'asc' | 'desc'
+  sortable: boolean
 }
 
 const HeaderCell = styled('div')<StyleProps>`
@@ -20,7 +20,9 @@ const HeaderCell = styled('div')<StyleProps>`
     font-weight: bold;
     cursor: ${props => (props.sortable ? 'pointer' : 'default')};
     transition: color 100ms ease-out;
-    ${props => props.sortable && `
+    ${props =>
+      props.sortable &&
+      `
       &:hover {
         color: ${props.theme.red};
       }
@@ -32,21 +34,20 @@ const HeaderCell = styled('div')<StyleProps>`
     opacity: ${props => (props.active ? 1 : 0)};
     transform-origin: center;
     transition: transform 100ms ease-out, opacity 100ms ease-out;
-    ${props => props.direction === 'desc' && `
+    ${props =>
+      props.direction === 'desc' &&
+      `
       transform: rotate(180deg);
     `}
   }
 `
 
 interface OwnProps {
-  sort: [AgencySortDimensions, 'asc' | 'desc'];
-  setSort?: (sort: [AgencySortDimensions, 'asc' | 'desc']) => void;
+  sort: [AgencySortDimensions, 'asc' | 'desc']
+  setSort?: (sort: [AgencySortDimensions, 'asc' | 'desc']) => void
 }
 
-const AgencyHeaderRow = ({
-  sort,
-  setSort,
-}: OwnProps) => {
+const AgencyHeaderRow = ({ sort, setSort }: OwnProps) => {
   const [activeDimension, direction] = sort
 
   function makeCell(label: string, dimension?: AgencySortDimensions) {
@@ -87,7 +88,6 @@ const AgencyHeaderRow = ({
       {makeCell('Primary Role', 'primary_role')}
       {makeCell('Established Year', 'year_established')}
       {makeCell('# of Roles', 'role_count')}
-      {makeCell('Roles')}
       {makeCell('Subpoena Power')}
     </div>
   )
