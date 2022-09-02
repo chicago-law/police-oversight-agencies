@@ -88,6 +88,7 @@ const AgencyHeaderRow = ({
       {makeCell('Established Year', 'year_established')}
       {makeCell('# of Roles', 'role_count')}
       {makeCell('Roles')}
+      {makeCell('Subpoena Power')}
     </div>
   )
 }
