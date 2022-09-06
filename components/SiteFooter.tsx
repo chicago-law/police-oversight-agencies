@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import LawSchoolLogo from '../public/static/UChicago_TheLawSchool_Vertical_White RGB.png'
+import LawSchoolLogo from '../public/static/UChicago_TheLawSchool_White RGB.svg'
 
 const Container = styled('footer')`
   margin: 10em 0 0 0;
