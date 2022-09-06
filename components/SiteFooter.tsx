@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import LawSchoolLogo from '../public/static/uc_law.svg'
+import LawSchoolLogo from '../public/static/UChicago_TheLawSchool_Vertical_White RGB.png'
 
 const Container = styled('footer')`
   margin: 10em 0 0 0;
   padding: 2em;
   background: ${props => props.theme.darkGray};
   font-family: ${props => props.theme.proximaNova};
-  box-shadow: 0 2px 10px rgba(0,0,0,0.25) inset;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) inset;
   ul {
     display: flex;
     align-items: flex-start;
@@ -33,7 +33,8 @@ const Container = styled('footer')`
       &:last-child {
         margin-right: 0;
       }
-      p, a {
+      p,
+      a {
         color: ${props => props.theme.lightGray};
         font-weight: normal;
       }
@@ -77,7 +78,14 @@ const SiteFooter = () => (
       </li>
       <li>
         <p>
-          The author of the survey has attempted to validate the data provided on this site to the extent possible using online information resources, but makes no representations about the accuracy of the information provided herein. In particular, the author notes that the field of civilian oversight of police is changing rapidly and this survey is only a snapshot of the field taken at the time of data-gathering (January - August 2019). We hope to periodically provide updated information.
+          The author of the survey has attempted to validate the data provided
+          on this site to the extent possible using online information
+          resources, but makes no representations about the accuracy of the
+          information provided herein. In particular, the author notes that the
+          field of civilian oversight of police is changing rapidly and this
+          survey is only a snapshot of the field taken at the time of
+          data-gathering (January - August 2022). We hope to periodically
+          provide updated information.
         </p>
       </li>
       <li>
