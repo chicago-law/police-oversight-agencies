@@ -45,7 +45,7 @@ const Container = styled('footer')`
         max-width: 300px;
         svg {
           position: relative;
-          top: 2px;
+          top: 6px;
           width: 100%;
           opacity: 0.8;
         }
