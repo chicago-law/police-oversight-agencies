@@ -92,7 +92,7 @@ const SiteHeader = () => {
       <div className="intro-container">
         <p>
           This site reports on an internet survey conducted January through
-          August 2019 of the government bodies responsible for civilian
+          August 2022 of the government bodies responsible for civilian
           oversight of municipal law enforcement entities in the top 100 U.S.
           jurisdictions based on population. The survey is an attempt to
           identify the entities and document the forms of civilian oversight in
@@ -150,7 +150,7 @@ const SiteHeader = () => {
         <StaleDataNotice>
           <p>
             <strong>Note: </strong> Thanks for checking out our website. This
-            site is based on data collected in 2019. For more current
+            site is based on data collected in 2022. For more current
             information on civilian oversight, go to
             <a
               href="https://www.nacole.org/"
