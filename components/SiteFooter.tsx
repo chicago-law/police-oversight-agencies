@@ -42,7 +42,7 @@ const Container = styled('footer')`
         max-width: 30em;
       }
       .logo {
-        max-width: 300px;
+        max-width: 400px;
         svg {
           position: relative;
           top: 1px;
