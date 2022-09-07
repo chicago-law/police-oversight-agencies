@@ -87,7 +87,7 @@ const AgencyHeaderRow = ({ sort, setSort }: OwnProps) => {
       {makeCell('Population', 'population')}
       {makeCell('Primary Role', 'primary_role')}
       {makeCell('Established Year', 'year_established')}
-      {makeCell('# of Roles', 'role_count')}
+      {makeCell('Board or Agency', 'primary_role')}
       {makeCell('Subpoena Power', 'primary_role')}
     </div>
   )
