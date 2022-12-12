@@ -139,7 +139,7 @@ const SiteHeader = () => {
         </div>
 
         <div className="article-link">
-          <a href="../public/static/Publication.pdf" rel="noopener noreferrer" target="_blank">
+          <a href="../static/Publication.pdf" rel="noopener noreferrer" target="_blank">
             Read the full publication here
             <FontAwesomeIcon icon={['fas', 'external-link-square-alt']} />
           </a>
