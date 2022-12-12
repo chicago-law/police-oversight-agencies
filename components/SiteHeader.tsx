@@ -13,7 +13,7 @@ import {
   CardSubtitle,
   Button,
   CardGroup,
-} from 'reactstrap';
+} from 'reactstrap'
 
 
 
