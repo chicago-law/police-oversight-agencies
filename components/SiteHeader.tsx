@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import styled from 'styled-components'
-import publication from "../public/static/Survey_Says_II_Published_Version.pdf"
+
 
 const Container = styled('header')`
   margin: 4em auto 0 auto;
@@ -139,7 +139,7 @@ const SiteHeader = () => {
         </div>
 
         <div className="article-link">
-          <a href={publication} rel="noopener noreferrer" target="_blank">
+          <a href="../public/static/Publication.pdf" rel="noopener noreferrer" target="_blank">
             Read the full publication here
             <FontAwesomeIcon icon={['fas', 'external-link-square-alt']} />
           </a>
