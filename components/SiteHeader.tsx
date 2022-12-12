@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import styled from 'styled-components'
+import publication from "../public/static/Survey_Says_II_Published_Version.pdf"
 
 const Container = styled('header')`
   margin: 4em auto 0 auto;
@@ -138,11 +139,7 @@ const SiteHeader = () => {
         </div>
 
         <div className="article-link">
-          <a
-            href="http://cardozolawreview.com/survey-says-u-s-cities-double-down-on-civilian-oversight-of-police-despite-challenges-and-controversy/"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
+          <a href={publication} rel="noopener noreferrer" target="_blank">
             Read the full publication here
             <FontAwesomeIcon icon={['fas', 'external-link-square-alt']} />
           </a>
@@ -160,9 +157,8 @@ const SiteHeader = () => {
               target="_blank"
             >
               {' '}
-              NACOLE.org
+              NACOLE.org.
             </a>
-            <p>.</p>
           </p>
         </StaleDataNotice>
       </div>
@@ -171,3 +167,17 @@ const SiteHeader = () => {
 }
 
 export default SiteHeader
+
+/*
+**ARTICLE LINK - Keep just in case we switch back to it 12/12/22**
+
+<div className="article-link">
+<a
+  href="http://cardozolawreview.com/survey-says-u-s-cities-double-down-on-civilian-oversight-of-police-despite-challenges-and-controversy/"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  Read the full publication here
+  <FontAwesomeIcon icon={['fas', 'external-link-square-alt']} />
+</a>
+</div> */
