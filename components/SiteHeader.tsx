@@ -92,7 +92,7 @@ const SiteHeader = () => {
       <div className="intro-container">
         <p>
           This site reports on an internet survey conducted January through
-          August 2022 of the government bodies responsible for civilian
+          August 2021 of the government bodies responsible for civilian
           oversight of municipal law enforcement entities in the top 100 U.S.
           jurisdictions based on population. The survey is an attempt to
           identify the entities and document the forms of civilian oversight in
@@ -116,15 +116,16 @@ const SiteHeader = () => {
             conducted to assess the prevalence of the various forms of civilian
             oversight across the largest U.S. cities. Based on online
             information, the survey identifies each civilian oversight agency as
-            providing one or more of the following seven civilian oversight
-            functions:{' '}
+            providing one of the following seven civilian oversight functions as
+            its "Primary Function":{' '}
             <strong>
               Investigative, Audit, Review, Adjudicative, Advisory, Supervisory,
             </strong>{' '}
-            and <strong>Appeals</strong>. The information on each agency has
-            been compiled to shed light on the prevalence of the various forms
-            of civilian oversight of policing that the largest U.S. cities
-            employ.
+            and <strong>Appeals</strong>. However, it is important to note that
+            many agencies provide more than one function. The information on
+            each agency has been compiled to shed light on the prevalence of the
+            various forms of civilian oversight of policing that the largest
+            U.S. cities employ.
           </p>
           <p>
             The results show that a majority of the top 100 U.S. jurisdictions
@@ -150,15 +151,15 @@ const SiteHeader = () => {
         <StaleDataNotice>
           <p>
             <strong>Note: </strong> Thanks for checking out our website. This
-            site is based on data collected in 2022. For more current
-            information on civilian oversight, go to
+            site is based on data collected in 2021 and only includes
+            information on civilian oversight in other cities, go to
             <a
               href="https://www.nacole.org/"
               rel="noopener noreferrer"
               target="_blank"
             >
               {' '}
-              NACOLE.org
+              NACOLE.org.
             </a>
           </p>
         </StaleDataNotice>
