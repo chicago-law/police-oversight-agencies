@@ -152,15 +152,17 @@ const SiteHeader = () => {
           <p>
             <strong>Note: </strong> Thanks for checking out our website. This
             site is based on data collected in 2021 and only includes
-            information on civilian oversight in other cities, go to
+            information on the 100 most populous U.S. cities. For information on
+            civilian oversight in other cities, go to
             <a
               href="https://www.nacole.org/"
               rel="noopener noreferrer"
               target="_blank"
             >
               {' '}
-              NACOLE.org.
+              NACOLE.org
             </a>
+            <p>.</p>
           </p>
         </StaleDataNotice>
       </div>
