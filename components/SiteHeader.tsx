@@ -2,37 +2,76 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { Carousel } from '@sefailyasoz/react-carousel'
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
 
-const CarouselData = [
+import {
+  Carousel,
+  CarouselItem,
+  CarouselControl,
+  CarouselIndicators,
+  CarouselCaption,
+} from 'reactstrap';
+
+const items = [
   {
-    headerText: null,
-    subText: 'Sub Text One',
-    image: 'https://picsum.photos/300/300',
+    src: 'https://picsum.photos/id/123/1200/400',
+    altText: 'Slide 1',
+    caption: 'Slide 1',
+    key: 1,
   },
   {
-    headerText: 'Header Text Two',
-    subText: null,
-    image: 'https://picsum.photos/1200/800',
+    src: 'https://picsum.photos/id/456/1200/400',
+    altText: 'Slide 2',
+    caption: 'Slide 2',
+    key: 2,
   },
   {
-    headerText: null,
-    subText: null,
-    image: 'https://picsum.photos/720/720',
+    src: 'https://picsum.photos/id/678/1200/400',
+    altText: 'Slide 3',
+    caption: 'Slide 3',
+    key: 3,
   },
-  {
-    headerText: 'Header Text Four',
-    subText: 'Sub Text Four',
-    image: 'https://picsum.photos/1920/1080',
-  },
-  {
-    headerText: 'Header Text Five',
-    subText: 'Sub Text Five',
-    image: 'https://picsum.photos/480/360',
-  },
-]
+];
+
+
+function Example(args) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [animating, setAnimating] = useState(false);
+
+  const next = () => {
+    if (animating) return;
+    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+    setActiveIndex(nextIndex);
+  };
+
+  const previous = () => {
+    if (animating) return;
+    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+    setActiveIndex(nextIndex);
+  };
+
+  const goToIndex = (newIndex) => {
+    if (animating) return;
+    setActiveIndex(newIndex);
+  };
+
+  const slides = items.map((item) => {
+    return (
+      <CarouselItem
+        onExiting={() => setAnimating(true)}
+        onExited={() => setAnimating(false)}
+        key={item.src}
+      >
+        <img src={item.src} alt={item.altText} />
+        <CarouselCaption
+          captionText={item.caption}
+          captionHeader={item.caption}
+        />
+      </CarouselItem>
+    );
+  });
+
+
 
 
 const Container = styled('header')`
@@ -170,7 +209,11 @@ const SiteHeader = () => {
         </div>
 
         <div className="article-link">
-          <a href="../static/Publication.pdf" rel="noopener noreferrer" target="_blank">
+          <a
+            href="../static/Publication.pdf"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             Read the full publication here
             <FontAwesomeIcon icon={['fas', 'external-link-square-alt']} />
           </a>
@@ -196,16 +239,29 @@ const SiteHeader = () => {
 
 
 
-
-      <Carousel
-              data={CarouselData}
-              rightItem={<FaArrowRight />}
-              leftItem={<FaArrowLeft />}
-              animationDuration={3000}
-              headerTextType="black"
-              subTextType="white"
-              size="normal"
-            />
+<Carousel
+      activeIndex={activeIndex}
+      next={next}
+      previous={previous}
+      {...args}
+    >
+      <CarouselIndicators
+        items={items}
+        activeIndex={activeIndex}
+        onClickHandler={goToIndex}
+      />
+      {slides}
+      <CarouselControl
+        direction="prev"
+        directionText="Previous"
+        onClickHandler={previous}
+      />
+      <CarouselControl
+        direction="next"
+        directionText="Next"
+        onClickHandler={next}
+      />
+    </Carousel>
 
 
 
@@ -213,21 +269,34 @@ const SiteHeader = () => {
 
 
     </Container>
-  )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        )
 }
 
-export default SiteHeader
 
-/*
-**ARTICLE LINK - Keep just in case we switch back to it 12/12/22**
 
-<div className="article-link">
-<a
-  href="http://cardozolawreview.com/survey-says-u-s-cities-double-down-on-civilian-oversight-of-police-despite-challenges-and-controversy/"
-  rel="noopener noreferrer"
-  target="_blank"
->
-  Read the full publication here
-  <FontAwesomeIcon icon={['fas', 'external-link-square-alt']} />
-</a>
-</div> */
+
+
+
+        export default SiteHeader
+
