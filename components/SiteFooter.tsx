@@ -84,7 +84,7 @@ const SiteFooter = () => (
           information provided herein. In particular, the author notes that the
           field of civilian oversight of police is changing rapidly and this
           survey is only a snapshot of the field taken at the time of
-          data-gathering (January - August 2022). We hope to periodically
+          data-gathering (January - August 2021). We hope to periodically
           provide updated information.
         </p>
       </li>
