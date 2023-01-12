@@ -3,23 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import styled from 'styled-components'
 
-
-import {
-  Card,
-  CardBody, 
-  CardImg,
-  CardTitle,
-  CardText, 
-  CardSubtitle,
-  Button,
-  CardGroup,
-} from 'reactstrap'
-
-
-
-
-
-
 const Container = styled('header')`
   margin: 4em auto 0 auto;
   padding: 0 1em;
@@ -182,42 +165,9 @@ const SiteHeader = () => {
           </p>
         </StaleDataNotice>
       </div>
-
-
-
-      
-
-
-
-
     </Container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         )
 }
-
-
-
-
 
 
         export default SiteHeader
